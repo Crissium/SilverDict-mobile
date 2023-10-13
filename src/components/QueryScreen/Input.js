@@ -16,6 +16,7 @@ export default function Input(props) {
 		<TextInput
 			ref={textInputRef}
 			style={{ flex: 1, height: 50, backgroundColor: 'transparent' }}
+			disableFullscreenUI={true}
 			cursorColor={useTheme().colors.onSurface}
 			selectionColor={useTheme().colors.onSurface}
 			underlineColor='transparent'

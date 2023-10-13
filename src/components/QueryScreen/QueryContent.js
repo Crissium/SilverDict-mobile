@@ -38,12 +38,14 @@ export default function QueryContent(props) {
 
 	if (article.length === 0)
 		return (
-			<FlatList
-				keyboardShouldPersistTaps='handled'
-				data={wordsToDisplay}
-				renderItem={({ item }) => <WordItem word={item} search={search} />}
-				keyExtractor={(item) => item}
-			/>
+			<View style={{ flex: 1 }}>
+				<FlatList
+					keyboardShouldPersistTaps='handled'
+					data={wordsToDisplay}
+					renderItem={({ item }) => <WordItem word={item} search={search} />}
+					keyExtractor={(item) => item}
+				/>
+			</View>
 		);
 	else
 		return (

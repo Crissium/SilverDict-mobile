@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Dimensions } from 'react-native';
+import { View } from 'react-native';
 import AutoHeightWebView from 'react-native-autoheight-webview';
 import { Button, Dialog, Portal, Text, useTheme } from 'react-native-paper';
 
@@ -91,7 +91,6 @@ articleElement.addEventListener('click', function (event) {
 });`
 
 export default function ArticleView(props) {
-	const { width, height } = Dimensions.get('window');
 	const { serverAddress, article, textZoom, nameDictionaryToJumpTo, search, setQuery, findInPageRef, fontFamily, darkTextColour } = props;
 	const webref = useRef(null);
 	const [wordSelected, setWordSelected] = useState('');
@@ -143,11 +142,11 @@ font[color=olivedrab]     { color: #ADFF2F !important; }
 	}, [nameDictionaryToJumpTo]);
 
 	return (
-		<>
+		<View style={{ flex: 1 }}>
 			<AutoHeightWebView
 				textZoom={textZoom}
 				style={{ flex: 1 }}
-				containerStyle={{ flex: 1, width }}
+				containerStyle={{ flex: 1 }}
 				viewportContent={'width=device-width, user-scalable=no'}
 				customStyle={`
 * {
@@ -195,9 +194,9 @@ ${useTheme().dark ? darkTextColourStylesheet : ''}
 				onLoadEnd={() => {
 					webref.current.injectJavaScript(clickListenersScript);
 					webref.current.requestFocus();
-					findInPageRef.current = function(wordToFind, isBackwards) {
+					findInPageRef.current = function (wordToFind, isBackwards) {
 						webref.current.injectJavaScript(`
-							wordToFind = '${wordToFind.normalize('NFD').replace(/\p{Diacritic}/gu, '')}';
+							wordToFind = '${wordToFind}';
 							window.find(wordToFind, false, ${isBackwards}, true, false, false);
 						`);
 					}
@@ -219,6 +218,6 @@ ${useTheme().dark ? darkTextColourStylesheet : ''}
 				setQuery={setQuery}
 				search={search}
 			/>
-		</>
+		</View>
 	);
 }
