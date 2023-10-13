@@ -8,7 +8,6 @@
 		android:icon="@mipmap/ic_launcher"
 		android:allowBackup="false"
 		android:usesCleartextTraffic="true"
-		android:imeOptions="flagNoExtractUi"
 		android:theme="@style/AppTheme">
 		<activity
 			android:name=".MainActivity"
