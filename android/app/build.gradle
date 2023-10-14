@@ -91,9 +91,9 @@ android {
 
 		release {
 			storeFile file('release_key.keystore')
-			storePassword ''
+			storePassword '!!REPLACE_ME!!'
 			keyAlias 'silverdict'
-			keyPassword ''
+			keyPassword '!!REPLACE_ME!!'
 		}
 	}
 	buildTypes {
