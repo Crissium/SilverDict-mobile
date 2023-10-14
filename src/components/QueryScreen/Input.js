@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TextInput, useTheme } from 'react-native-paper';
+import { isRTL } from '../../utils';
 
 export default function Input(props) {
 	const { query, setQuery, textInputRef, handleInputSubmit, setArticle } = props;
@@ -11,6 +12,13 @@ export default function Input(props) {
 	function handleInputFocus(e) {
 		setArticle('');
 	}
+
+	useEffect(function () {
+		if (isRTL(query))
+			textInputRef.current.setNativeProps({ style: { direction: 'rtl', textAlign: 'right' } });
+		else
+			textInputRef.current.setNativeProps({ style: { direction: 'ltr', textAlign: 'left' } });
+	}, [query]);
 
 	return (
 		<TextInput
