@@ -6,7 +6,7 @@ import QueryContent from "./QueryScreen/QueryContent";
 import { useAppContext } from "../AppContext";
 
 export default function QueryScreen({ navigation }) {
-	const { serverAddress, dictionaries, groups, groupings, history, setHistory, fontFamily, darkTextColour, sizeSuggestion } = useAppContext();
+	const { serverAddress, dictionaries, groups, groupings, history, setHistory, sizeSuggestion } = useAppContext();
 	const apiPrefix = `${serverAddress}/api`;
 	const [query, setQuery] = useState('');
 	const textInputRef = useRef(null);
@@ -142,8 +142,6 @@ export default function QueryScreen({ navigation }) {
 				suggestions={suggestions}
 				search={searchBranching}
 				article={article}
-				fontFamily={fontFamily}
-				darkTextColour={darkTextColour}
 				nameDictionaryToJumpTo={nameDictionaryToJumpTo}
 				setQuery={setQueryAndFocusOnInput}
 				searchInLocalHistory={searchInLocalHistory}

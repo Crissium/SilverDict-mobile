@@ -1,6 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { I18nManager } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { AppProvider } from './AppContext';
 import QueryScreen from './components/QueryScreen';

@@ -20,7 +20,7 @@ function WordItem(props) {
 }
 
 export default function QueryContent(props) {
-	const { serverAddress, queryIsEmpty, history, suggestions, search, article, fontFamily, darkTextColour, nameDictionaryToJumpTo, setQuery, searchInLocalHistory, ableToGoBack, ableToGoForward } = props;
+	const { serverAddress, queryIsEmpty, history, suggestions, search, article, nameDictionaryToJumpTo, setQuery, searchInLocalHistory, ableToGoBack, ableToGoForward } = props;
 	const wordsToDisplay = queryIsEmpty ? history : suggestions;
 	const findInPageRef = useRef(null);
 	const [textZoom, setTextZoom] = useState('');
@@ -59,9 +59,7 @@ export default function QueryContent(props) {
 					nameDictionaryToJumpTo={nameDictionaryToJumpTo}
 					search={search}
 					setQuery={setQuery}
-					findInPageRef={findInPageRef}
-					fontFamily={fontFamily}
-					darkTextColour={darkTextColour} />
+					findInPageRef={findInPageRef} />
 				<ArticleBottomBar
 					searchInLocalHistory={searchInLocalHistory}
 					ableToGoBack={ableToGoBack}

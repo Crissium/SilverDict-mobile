@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { View } from 'react-native';
 import AutoHeightWebView from 'react-native-autoheight-webview';
 import { Button, Dialog, Portal, Text, useTheme } from 'react-native-paper';
+import { useAppContext } from '../../AppContext';
 
 function ConfirmSearchDialogue(props) {
 	const { visible, wordSelected, setWordSelected, setQuery, search } = props;
@@ -91,7 +92,8 @@ articleElement.addEventListener('click', function (event) {
 });`
 
 export default function ArticleView(props) {
-	const { serverAddress, article, textZoom, nameDictionaryToJumpTo, search, setQuery, findInPageRef, fontFamily, darkTextColour } = props;
+	const { serverAddress, article, textZoom, nameDictionaryToJumpTo, search, setQuery, findInPageRef } = props;
+	const { fontFamily, darkTextColour } = useAppContext();
 	const webref = useRef(null);
 	const [wordSelected, setWordSelected] = useState('');
 
