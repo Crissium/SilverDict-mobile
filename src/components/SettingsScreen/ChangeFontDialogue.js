@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Dialog, Portal, Text, TextInput } from "react-native-paper";
+import { localisedStrings } from "../../translations/l10n";
 
 export default function ChangeFontDialogue(props) {
 	const { visible, setVisible, setFontFamily } = props;
@@ -17,9 +18,9 @@ export default function ChangeFontDialogue(props) {
 			<Dialog
 				visible={visible}
 				onDismiss={() => setVisible(false)}>
-				<Dialog.Title>Change font</Dialog.Title>
+				<Dialog.Title>{localisedStrings["change-font-dialogue-title"]}</Dialog.Title>
 				<Dialog.Content>
-					<Text>Please ‘serif’ or ‘sans-serif’ for maximum compatibility.{'\n'}</Text>
+					<Text>{localisedStrings["change-font-dialogue-content"]}</Text>
 					<TextInput
 						style={{ backgroundColor: 'transparent' }}
 						placeholder='serif'
@@ -39,12 +40,12 @@ export default function ChangeFontDialogue(props) {
 					<Button onPress={() => {
 						setVisible(false);
 					}}>
-						Cancel
+						{localisedStrings["generic-cancel"]}
 					</Button>
 					<Button onPress={() => {
 						handleSubmit();
 					}}>
-						OK
+						{localisedStrings["generic-ok"]}
 					</Button>
 				</Dialog.Actions>
 			</Dialog>

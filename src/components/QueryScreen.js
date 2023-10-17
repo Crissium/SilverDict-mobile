@@ -4,6 +4,7 @@ import { loadDataFromJsonResponse } from "../utils";
 import QueryBar from "./QueryScreen/QueryBar";
 import QueryContent from "./QueryScreen/QueryContent";
 import { useAppContext } from "../AppContext";
+import { localisedStrings } from "../translations/l10n";
 
 export default function QueryScreen({ navigation }) {
 	const { serverAddress, dictionaries, groups, groupings, history, setHistory, sizeSuggestion } = useAppContext();
@@ -44,7 +45,7 @@ export default function QueryScreen({ navigation }) {
 					}
 				})
 				.catch((error) => {
-					alert('Failed to fetch suggestions.' + error);
+					alert(localisedStrings["query-screen-failure-fetch-suggestions"]);
 				});
 		}
 	}, [dictionaries, groupings, nameActiveGroup, query, sizeSuggestion]);
@@ -76,7 +77,7 @@ export default function QueryScreen({ navigation }) {
 			})
 			.catch((error) => {
 				resetNamesActiveDictionaries();
-				alert('Failed to fetch articles.');
+				alert(localisedStrings["query-screen-failure-fetch-articles"]);
 			});
 	}
 

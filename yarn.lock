@@ -4705,6 +4705,11 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.npmmirror.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
+localized-strings@^0.2.0:
+  version "0.2.4"
+  resolved "https://registry.npmmirror.com/localized-strings/-/localized-strings-0.2.4.tgz#9d61c06b60cc7b5edf7c46e6c7f2d1ecb84aeb2c"
+  integrity sha512-TKDhqFPkIIN/if2FSvVVZTaM/GP9TzfgdQ2uY65mr32xgFu5nqkKXprXbzy5rfx32DF5LDvS/y1UqYF/mAscYA==
+
 locate-path@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmmirror.com/locate-path/-/locate-path-3.0.0.tgz#dbec3b3ab759758071b58fe59fc41871af21400e"
@@ -5651,6 +5656,13 @@ react-is@^17.0.1:
   resolved "https://registry.npmmirror.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-localization@^1.0.17:
+  version "1.0.19"
+  resolved "https://registry.npmmirror.com/react-localization/-/react-localization-1.0.19.tgz#b65a7fa58096cff6aa38bc3a0c4817ec97469ef0"
+  integrity sha512-f4E6T8xRis19K8qMOnnhjGV2quy1YH2lrSsnAiytvgt7uOSp6WgDhrZH6XZEaEFqupTOCFSf8uagIoIAkjl4JA==
+  dependencies:
+    localized-strings "^0.2.0"
+
 react-native-autoheight-webview@^1.6.5:
   version "1.6.5"
   resolved "https://registry.npmmirror.com/react-native-autoheight-webview/-/react-native-autoheight-webview-1.6.5.tgz#ff87e8971a5f8ba8aa8c0abf1e439ab88468adb1"
@@ -5674,6 +5686,13 @@ react-native-gesture-handler@^2.13.1:
     invariant "^2.2.4"
     lodash "^4.17.21"
     prop-types "^15.7.2"
+
+react-native-localization@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.npmmirror.com/react-native-localization/-/react-native-localization-2.3.2.tgz#ac82089519681a8e53fa39dcf7a9f5b6be2c5cb6"
+  integrity sha512-9i2wkCFwvKVXq0w6tu1eTCGUZuKBQXoCGWBWbW4HYsFJe+MEQsFCYdrhoBsn8IAr/KA9AYUiEyxxuN3hLRxF4w==
+  dependencies:
+    react-localization "^1.0.17"
 
 react-native-paper@^5.10.6:
   version "5.10.6"

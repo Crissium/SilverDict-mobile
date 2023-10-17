@@ -9,6 +9,7 @@ import ChangeSizeHistoryDialogue from "./SettingsScreen/ChangeSizeHistoryDialogu
 import ConfirmClearHistoryDialogue from "./SettingsScreen/ConfirmClearHistoryDialogue";
 import ConfirmRecreateNgramDialogue from "./SettingsScreen/ConfirmRecreateNgramDialogue";
 import { useAppContext } from "../AppContext";
+import { localisedStrings } from "../translations/l10n";
 
 export default function SettingsScreen({ navigation }) {
 	const { serverAddress, setServerAddress, fontFamily, setFontFamily, darkTextColour, setDarkTextColour, sizeSuggestion, setSizeSuggestion, sizeHistory, setSizeHistory, setHistory } = useAppContext();
@@ -25,55 +26,55 @@ export default function SettingsScreen({ navigation }) {
 		<View style={{flex: 1}}>
 			<Appbar.Header>
 				<Appbar.Action icon='menu' onPress={() => navigation.openDrawer()} />
-				<Appbar.Content title='Settings' />
+				<Appbar.Content title={localisedStrings["drawer-settings-label"]} />
 			</Appbar.Header>
 			<FlatList
 				data={[
 					{
-						title: 'Server address',
+						title: localisedStrings["settings-screen-server-address-title"],
 						description: serverAddress,
 						onPress: () => {
 							setAddressDialogueVisible(true);
 						}
 					},
 					{
-						title: 'Font',
+						title: localisedStrings["settings-screen-font-family-title"],
 						description: fontFamily,
 						onPress: () => {
 							setFontDialogueVisible(true);
 						}
 					},
 					{
-						title: 'Colour of the text in dark mode',
+						title: localisedStrings["settings-screen-dark-text-colour-title"],
 						description: darkTextColour,
 						onPress: () => {
 							setColourDialogueVisible(true);
 						}
 					},
 					{
-						title: 'Suggestion size',
+						title: localisedStrings["settings-screen-size-suggestions-title"],
 						description: sizeSuggestion.toString(),
 						onPress: () => {
 							setSizeSuggestionDialogueVisible(true);
 						}
 					},
 					{
-						title: 'History size',
+						title: localisedStrings["settings-screen-size-history-title"],
 						description: sizeHistory.toString(),
 						onPress: () => {
 							setSizeHistoryDialogueVisible(true);
 						}
 					},
 					{
-						title: 'Clear history',
+						title: localisedStrings["clear-history-dialogue-title"],
 						description: '',
 						onPress: () => {
 							setClearHistoryDialogueVisible(true);
 						}
 					},
 					{
-						title: 'Recreate ngram table',
-						description: 'It could be very slow.',
+						title: localisedStrings["confirm-recreate-ngram-dialogue-title"],
+						description: localisedStrings["settings-screen-recreate-ngram-description"],
 						onPress: () => {
 							setRecreateNgramDialogueVisible(true);
 						}

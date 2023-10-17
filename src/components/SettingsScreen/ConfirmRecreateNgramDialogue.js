@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Dialog, Portal, ProgressBar, Text } from "react-native-paper";
 import { loadDataFromJsonResponse } from "../../utils";
+import { localisedStrings } from "../../translations/l10n";
 
 function InProgressDialogue(props) {
 	const { visible } = props;
@@ -11,7 +12,7 @@ function InProgressDialogue(props) {
 				visible={visible}
 				dismissable={false}
 			>
-				<Dialog.Title>Recreating ngram table…</Dialog.Title>
+				<Dialog.Title>{localisedStrings["confirm-recreate-ngram-dialogue-message-in-progress"]}</Dialog.Title>
 				<Dialog.Content>
 					<ProgressBar indeterminate={true} />
 				</Dialog.Content>
@@ -30,11 +31,11 @@ export default function ConfirmRecreateNgramDialogue(props) {
 			.then(loadDataFromJsonResponse)
 			.then((data) => {
 				if (data['success']) {
-					alert('Recreated ngram table.');
+					alert(localisedStrings["confirm-recreate-ngram-dialogue-message-success"]);
 				}
 			})
 			.catch((error) => {
-				alert('Failed to recreate ngram table');
+				alert(localisedStrings["confirm-recreate-ngram-dialogue-message-failure"]);
 			})
 			.finally(() => {
 				setInProgress(false);
@@ -49,20 +50,20 @@ export default function ConfirmRecreateNgramDialogue(props) {
 				<Dialog
 					visible={visible}
 					onDismiss={() => setVisible(false)}>
-					<Dialog.Title>Recreate ngram table</Dialog.Title>
+					<Dialog.Title>{localisedStrings["confirm-recreate-ngram-dialogue-title"]}</Dialog.Title>
 					<Dialog.Content>
-						<Text>Are you sure you want to recreate the ngram table?</Text>
+						<Text>{localisedStrings["confirm-recreate-ngram-dialogue-content"]}</Text>
 					</Dialog.Content>
 					<Dialog.Actions>
 						<Button onPress={() => {
 							setVisible(false);
 						}}>
-							No
+							{localisedStrings["generic-no"]}
 						</Button>
 						<Button onPress={() => {
 							handleConfirm();
 						}}>
-							Yes
+							{localisedStrings["generic-yes"]}
 						</Button>
 					</Dialog.Actions>
 				</Dialog>

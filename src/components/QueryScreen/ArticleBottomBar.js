@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { Appbar, TextInput, useTheme } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TEXT_ZOOM_MAX, TEXT_ZOOM_MIN } from '../../config';
+import { localisedStrings } from '../../translations/l10n';
 
 const TEXT_ZOOM_STEP = 10;
 
@@ -37,7 +38,7 @@ export default function ArticleBottomBar(props) {
 						activeUnderlineColor='transparent'
 						cursorColor={onSurfaceColour}
 						selectionColor={onSurfaceColour}
-						placeholder='Search…'
+						placeholder={localisedStrings['placeholder-search']}
 						value={wordToFind}
 						autoCapitalize='none'
 						autoComplete='off'

@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import AutoHeightWebView from 'react-native-autoheight-webview';
 import { Button, Dialog, Portal, Text, useTheme } from 'react-native-paper';
 import { useAppContext } from '../../AppContext';
+import { localisedStrings } from '../../translations/l10n';
 
 function ConfirmSearchDialogue(props) {
 	const { visible, wordSelected, setWordSelected, setQuery, search } = props;
@@ -13,25 +14,25 @@ function ConfirmSearchDialogue(props) {
 				visible={visible}
 				onDismiss={() => setWordSelected('')}>
 				<Dialog.Content>
-					<Text>Search for ‘{wordSelected}’?</Text>
+					<Text>{localisedStrings.formatString(localisedStrings['article-view-tap-to-search-dialogue-message'], wordSelected)}</Text>
 				</Dialog.Content>
 				<Dialog.Actions>
 					<Button onPress={() => {
 						setWordSelected('');
 					}}>
-						No
+						{localisedStrings['generic-no']}
 					</Button>
 					<Button onPress={() => {
 						setQuery(wordSelected);
 						setWordSelected('');
 					}}>
-						Edit first
+						{localisedStrings['generic-edit']}
 					</Button>
 					<Button onPress={() => {
 						search(wordSelected);
 						setWordSelected('');
 					}}>
-						Yes
+						{localisedStrings['generic-yes']}
 					</Button>
 				</Dialog.Actions>
 			</Dialog>

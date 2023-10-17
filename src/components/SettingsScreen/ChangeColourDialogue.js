@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Dialog, Portal, Text, TextInput } from "react-native-paper";
+import { localisedStrings } from "../../translations/l10n";
 
 export default function ChangeColourDialogue(props) {
 	const { visible, setVisible, setDarkTextColour } = props;
@@ -17,9 +18,9 @@ export default function ChangeColourDialogue(props) {
 			<Dialog
 				visible={visible}
 				onDismiss={() => setVisible(false)}>
-				<Dialog.Title>Change the colour of the text in the dark mode</Dialog.Title>
+				<Dialog.Title>{localisedStrings["change-colour-dialogue-title"]}</Dialog.Title>
 				<Dialog.Content>
-					<Text>A value such as ‘white’ or ‘grey’ is recommended.{'\n'}</Text>
+					<Text>{localisedStrings["change-colour-dialogue-content"]}</Text>
 					<TextInput
 						style={{ backgroundColor: 'transparent' }}
 						placeholder='grey'
@@ -39,12 +40,12 @@ export default function ChangeColourDialogue(props) {
 					<Button onPress={() => {
 						setVisible(false);
 					}}>
-						Cancel
+						{localisedStrings["generic-cancel"]}
 					</Button>
 					<Button onPress={() => {
 						handleSubmit();
 					}}>
-						OK
+						{localisedStrings["generic-ok"]}
 					</Button>
 				</Dialog.Actions>
 			</Dialog>

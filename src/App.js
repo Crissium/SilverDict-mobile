@@ -4,9 +4,12 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { I18nManager } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { AppProvider } from './AppContext';
+import { interfaceLangIsRTL } from './translations/l10n';
 import QueryScreen from './components/QueryScreen';
 import SettingsScreen from './components/SettingsScreen';
 import DrawerContent from './components/DrawerContent';
+
+I18nManager.forceRTL(interfaceLangIsRTL);
 
 const Drawer = createDrawerNavigator();
 

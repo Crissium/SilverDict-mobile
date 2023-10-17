@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { TextInput, useTheme } from 'react-native-paper';
 import { isRTL } from '../../utils';
+import { localisedStrings } from '../../translations/l10n';
 
 export default function Input(props) {
 	const { query, setQuery, textInputRef, handleInputSubmit, setArticle } = props;
@@ -29,7 +30,7 @@ export default function Input(props) {
 			selectionColor={useTheme().colors.onSurface}
 			underlineColor='transparent'
 			activeUnderlineColor='transparent'
-			placeholder='Search…'
+			placeholder={localisedStrings['placeholder-search']}
 			value={query}
 			onChangeText={handleQueryChange}
 			onFocus={handleInputFocus}

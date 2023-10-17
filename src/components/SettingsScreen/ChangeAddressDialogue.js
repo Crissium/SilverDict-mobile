@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Dialog, Portal, TextInput } from "react-native-paper";
 import { loadDataFromJsonResponse } from "../../utils";
+import { localisedStrings } from "../../translations/l10n";
 
 export default function ChangeAddressDialogue(props) {
 	const { visible, setVisible, setServerAddress } = props;
@@ -16,7 +17,7 @@ export default function ChangeAddressDialogue(props) {
 				}
 			})
 			.catch((error) => {
-				alert('Unable to connect to server.');
+				alert(localisedStrings["change-address-dialogue-message-unable-to-connect"]);
 			});
 	}
 
@@ -25,7 +26,7 @@ export default function ChangeAddressDialogue(props) {
 			<Dialog
 				visible={visible}
 				onDismiss={() => setVisible(false)}>
-				<Dialog.Title>Change server address</Dialog.Title>
+				<Dialog.Title>{localisedStrings["change-address-dialogue-title"]}</Dialog.Title>
 				<Dialog.Content>
 					<TextInput
 						inputMode='url'
@@ -48,12 +49,12 @@ export default function ChangeAddressDialogue(props) {
 					<Button onPress={() => {
 						setVisible(false);
 					}}>
-						Cancel
+						{localisedStrings["generic-cancel"]}
 					</Button>
 					<Button onPress={() => {
 						handleSubmit();
 					}}>
-						OK
+						{localisedStrings["generic-ok"]}
 					</Button>
 				</Dialog.Actions>
 			</Dialog>

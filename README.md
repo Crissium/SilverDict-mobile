@@ -11,7 +11,7 @@ This is the mobile (Android & iOS) client of [SilverDict](https://github.com/Cri
 - [x] Tap to search
 - [ ] Dictionary/Group management
 - [ ] Better dark mode support in the WebView
-- [ ] Two-column view in wider screens
+- [ ] Two-column view on wider screens
 - [ ] Localisation
 
 For an envisaged project structure, please refer to the [mindmap](/doc/Structure.mm), drawn with FreePlane.
@@ -24,7 +24,7 @@ For an envisaged project structure, please refer to the [mindmap](/doc/Structure
 
 ## Prerequisites
 
-- React Native without Expo, Android SDK, Xcode, etc.
+- React Native (without Expo), Android SDK, Xcode, etc.
 - A working SilverDict server for testing
 - React Native Paper
 - React Navigation

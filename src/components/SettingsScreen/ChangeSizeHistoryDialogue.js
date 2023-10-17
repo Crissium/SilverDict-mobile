@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Dialog, Portal, TextInput } from "react-native-paper";
 import { JSON_HEADER, loadDataFromJsonResponse } from "../../utils";
+import { localisedStrings } from "../../translations/l10n";
 
 export default function ChangeSizeHistoryDialogue(props) {
 	const { visible, setVisible, apiPrefix, setHistory, setSizeHistory } = props;
@@ -12,7 +13,7 @@ export default function ChangeSizeHistoryDialogue(props) {
 			newSize = parseInt(sizeBuffer);
 			newSize = Math.max(newSize, 0);
 		} catch (error) {
-			alert('Invalid number.');
+			alert(localisedStrings["generic-alert-invalid-number"]);
 			return;
 		}
 
@@ -28,7 +29,7 @@ export default function ChangeSizeHistoryDialogue(props) {
 				setVisible(false);
 			})
 			.catch((error) => {
-				alert('Failed to update history size.');
+				alert(localisedStrings["change-size-history-dialogue-message-failure"]);
 			});
 	}
 
@@ -37,7 +38,7 @@ export default function ChangeSizeHistoryDialogue(props) {
 			<Dialog
 				visible={visible}
 				onDismiss={() => setVisible(false)}>
-				<Dialog.Title>Change the size of history</Dialog.Title>
+				<Dialog.Title>{localisedStrings["change-size-history-dialogue-title"]}</Dialog.Title>
 				<Dialog.Content>
 					<TextInput
 						style={{ backgroundColor: 'transparent' }}
@@ -59,12 +60,12 @@ export default function ChangeSizeHistoryDialogue(props) {
 					<Button onPress={() => {
 						setVisible(false);
 					}}>
-						Cancel
+						{localisedStrings["generic-cancel"]}
 					</Button>
 					<Button onPress={() => {
 						handleSubmit();
 					}}>
-						OK
+						{localisedStrings["generic-ok"]}
 					</Button>
 				</Dialog.Actions>
 			</Dialog>

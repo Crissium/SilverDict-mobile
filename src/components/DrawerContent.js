@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { DrawerContentScrollView } from "@react-navigation/drawer";
 import { Drawer } from "react-native-paper";
+import { localisedStrings } from "../translations/l10n";
 
 export default function DrawerContent(props) {
 	return (
@@ -9,12 +10,12 @@ export default function DrawerContent(props) {
 			<View>
 				<Drawer.Item
 					icon='magnify'
-					label='Query'
+					label={localisedStrings['drawer-query-label']}
 					onPress={() => props.navigation.navigate('Query')}
 				/>
 				<Drawer.Item
 					icon='cog'
-					label='Settings'
+					label={localisedStrings['drawer-settings-label']}
 					onPress={() => props.navigation.navigate('Settings')}
 				/>
 			</View>
