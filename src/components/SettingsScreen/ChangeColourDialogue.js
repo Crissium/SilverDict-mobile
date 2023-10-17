@@ -18,9 +18,9 @@ export default function ChangeColourDialogue(props) {
 			<Dialog
 				visible={visible}
 				onDismiss={() => setVisible(false)}>
-				<Dialog.Title>{localisedStrings["change-colour-dialogue-title"]}</Dialog.Title>
+				<Dialog.Title>{localisedStrings['change-colour-dialogue-title']}</Dialog.Title>
 				<Dialog.Content>
-					<Text>{localisedStrings["change-colour-dialogue-content"]}</Text>
+					<Text>{localisedStrings['change-colour-dialogue-content']}</Text>
 					<TextInput
 						style={{ backgroundColor: 'transparent' }}
 						placeholder='grey'
@@ -40,12 +40,12 @@ export default function ChangeColourDialogue(props) {
 					<Button onPress={() => {
 						setVisible(false);
 					}}>
-						{localisedStrings["generic-cancel"]}
+						{localisedStrings['generic-cancel']}
 					</Button>
 					<Button onPress={() => {
 						handleSubmit();
 					}}>
-						{localisedStrings["generic-ok"]}
+						{localisedStrings['generic-ok']}
 					</Button>
 				</Dialog.Actions>
 			</Dialog>

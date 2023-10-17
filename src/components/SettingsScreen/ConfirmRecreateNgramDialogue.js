@@ -12,7 +12,7 @@ function InProgressDialogue(props) {
 				visible={visible}
 				dismissable={false}
 			>
-				<Dialog.Title>{localisedStrings["confirm-recreate-ngram-dialogue-message-in-progress"]}</Dialog.Title>
+				<Dialog.Title>{localisedStrings['confirm-recreate-ngram-dialogue-message-in-progress']}</Dialog.Title>
 				<Dialog.Content>
 					<ProgressBar indeterminate={true} />
 				</Dialog.Content>
@@ -31,11 +31,11 @@ export default function ConfirmRecreateNgramDialogue(props) {
 			.then(loadDataFromJsonResponse)
 			.then((data) => {
 				if (data['success']) {
-					alert(localisedStrings["confirm-recreate-ngram-dialogue-message-success"]);
+					alert(localisedStrings['confirm-recreate-ngram-dialogue-message-success']);
 				}
 			})
 			.catch((error) => {
-				alert(localisedStrings["confirm-recreate-ngram-dialogue-message-failure"]);
+				alert(localisedStrings['confirm-recreate-ngram-dialogue-message-failure']);
 			})
 			.finally(() => {
 				setInProgress(false);
@@ -50,20 +50,20 @@ export default function ConfirmRecreateNgramDialogue(props) {
 				<Dialog
 					visible={visible}
 					onDismiss={() => setVisible(false)}>
-					<Dialog.Title>{localisedStrings["confirm-recreate-ngram-dialogue-title"]}</Dialog.Title>
+					<Dialog.Title>{localisedStrings['confirm-recreate-ngram-dialogue-title']}</Dialog.Title>
 					<Dialog.Content>
-						<Text>{localisedStrings["confirm-recreate-ngram-dialogue-content"]}</Text>
+						<Text>{localisedStrings['confirm-recreate-ngram-dialogue-content']}</Text>
 					</Dialog.Content>
 					<Dialog.Actions>
 						<Button onPress={() => {
 							setVisible(false);
 						}}>
-							{localisedStrings["generic-no"]}
+							{localisedStrings['generic-no']}
 						</Button>
 						<Button onPress={() => {
 							handleConfirm();
 						}}>
-							{localisedStrings["generic-yes"]}
+							{localisedStrings['generic-yes']}
 						</Button>
 					</Dialog.Actions>
 				</Dialog>

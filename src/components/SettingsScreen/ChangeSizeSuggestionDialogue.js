@@ -13,7 +13,7 @@ export default function ChangeSizeSuggestionDialogue(props) {
 			newSize = parseInt(sizeBuffer);
 			newSize = Math.max(newSize, 1);
 		} catch (error) {
-			alert(localisedStrings["generic-alert-invalid-number"]);
+			alert(localisedStrings['generic-alert-invalid-number']);
 			return;
 		}
 
@@ -28,7 +28,7 @@ export default function ChangeSizeSuggestionDialogue(props) {
 				setVisible(false);
 			})
 			.catch((error) => {
-				alert(localisedStrings["change-size-suggestion-dialogue-message-failure"]);
+				alert(localisedStrings['change-size-suggestion-dialogue-message-failure']);
 			});
 	}
 
@@ -37,7 +37,7 @@ export default function ChangeSizeSuggestionDialogue(props) {
 			<Dialog
 				visible={visible}
 				onDismiss={() => setVisible(false)}>
-				<Dialog.Title>{localisedStrings["change-size-suggestion-dialogue-title"]}</Dialog.Title>
+				<Dialog.Title>{localisedStrings['change-size-suggestion-dialogue-title']}</Dialog.Title>
 				<Dialog.Content>
 					<TextInput
 						style={{ backgroundColor: 'transparent' }}
@@ -59,12 +59,12 @@ export default function ChangeSizeSuggestionDialogue(props) {
 					<Button onPress={() => {
 						setVisible(false);
 					}}>
-						{localisedStrings["generic-cancel"]}
+						{localisedStrings['generic-cancel']}
 					</Button>
 					<Button onPress={() => {
 						handleSubmit();
 					}}>
-						{localisedStrings["generic-ok"]}
+						{localisedStrings['generic-ok']}
 					</Button>
 				</Dialog.Actions>
 			</Dialog>

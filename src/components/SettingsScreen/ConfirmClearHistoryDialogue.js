@@ -16,7 +16,7 @@ export default function ConfirmClearHistoryDialogue(props) {
 				setVisible(false);
 			})
 			.catch((error) => {
-				alert(localisedStrings["clear-history-dialogue-message-failure"]);
+				alert(localisedStrings['clear-history-dialogue-message-failure']);
 			});
 	}
 
@@ -25,20 +25,20 @@ export default function ConfirmClearHistoryDialogue(props) {
 			<Dialog
 				visible={visible}
 				onDismiss={() => setVisible(false)}>
-				<Dialog.Title>{localisedStrings["clear-history-dialogue-title"]}</Dialog.Title>
+				<Dialog.Title>{localisedStrings['clear-history-dialogue-title']}</Dialog.Title>
 				<Dialog.Content>
-					<Text>{localisedStrings["clear-history-dialogue-content"]}</Text>
+					<Text>{localisedStrings['clear-history-dialogue-content']}</Text>
 				</Dialog.Content>
 				<Dialog.Actions>
 					<Button onPress={() => {
 						setVisible(false);
 					}}>
-						{localisedStrings["generic-no"]}
+						{localisedStrings['generic-no']}
 					</Button>
 					<Button onPress={() => {
 						handleConfirm();
 					}}>
-						{localisedStrings["generic-yes"]}
+						{localisedStrings['generic-yes']}
 					</Button>
 				</Dialog.Actions>
 			</Dialog>

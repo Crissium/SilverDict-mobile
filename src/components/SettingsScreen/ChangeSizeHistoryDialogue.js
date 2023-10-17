@@ -13,7 +13,7 @@ export default function ChangeSizeHistoryDialogue(props) {
 			newSize = parseInt(sizeBuffer);
 			newSize = Math.max(newSize, 0);
 		} catch (error) {
-			alert(localisedStrings["generic-alert-invalid-number"]);
+			alert(localisedStrings['generic-alert-invalid-number']);
 			return;
 		}
 
@@ -29,7 +29,7 @@ export default function ChangeSizeHistoryDialogue(props) {
 				setVisible(false);
 			})
 			.catch((error) => {
-				alert(localisedStrings["change-size-history-dialogue-message-failure"]);
+				alert(localisedStrings['change-size-history-dialogue-message-failure']);
 			});
 	}
 
@@ -38,7 +38,7 @@ export default function ChangeSizeHistoryDialogue(props) {
 			<Dialog
 				visible={visible}
 				onDismiss={() => setVisible(false)}>
-				<Dialog.Title>{localisedStrings["change-size-history-dialogue-title"]}</Dialog.Title>
+				<Dialog.Title>{localisedStrings['change-size-history-dialogue-title']}</Dialog.Title>
 				<Dialog.Content>
 					<TextInput
 						style={{ backgroundColor: 'transparent' }}
@@ -60,12 +60,12 @@ export default function ChangeSizeHistoryDialogue(props) {
 					<Button onPress={() => {
 						setVisible(false);
 					}}>
-						{localisedStrings["generic-cancel"]}
+						{localisedStrings['generic-cancel']}
 					</Button>
 					<Button onPress={() => {
 						handleSubmit();
 					}}>
-						{localisedStrings["generic-ok"]}
+						{localisedStrings['generic-ok']}
 					</Button>
 				</Dialog.Actions>
 			</Dialog>

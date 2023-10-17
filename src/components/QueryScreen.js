@@ -45,7 +45,7 @@ export default function QueryScreen({ navigation }) {
 					}
 				})
 				.catch((error) => {
-					alert(localisedStrings["query-screen-failure-fetch-suggestions"]);
+					alert(localisedStrings['query-screen-failure-fetch-suggestions']);
 				});
 		}
 	}, [dictionaries, groupings, nameActiveGroup, query, sizeSuggestion]);
@@ -77,7 +77,7 @@ export default function QueryScreen({ navigation }) {
 			})
 			.catch((error) => {
 				resetNamesActiveDictionaries();
-				alert(localisedStrings["query-screen-failure-fetch-articles"]);
+				alert(localisedStrings['query-screen-failure-fetch-articles']);
 			});
 	}
 

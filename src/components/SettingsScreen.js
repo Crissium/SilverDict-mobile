@@ -26,55 +26,55 @@ export default function SettingsScreen({ navigation }) {
 		<View style={{flex: 1}}>
 			<Appbar.Header>
 				<Appbar.Action icon='menu' onPress={() => navigation.openDrawer()} />
-				<Appbar.Content title={localisedStrings["drawer-settings-label"]} />
+				<Appbar.Content title={localisedStrings['drawer-settings-label']} />
 			</Appbar.Header>
 			<FlatList
 				data={[
 					{
-						title: localisedStrings["settings-screen-server-address-title"],
+						title: localisedStrings['settings-screen-server-address-title'],
 						description: serverAddress,
 						onPress: () => {
 							setAddressDialogueVisible(true);
 						}
 					},
 					{
-						title: localisedStrings["settings-screen-font-family-title"],
+						title: localisedStrings['settings-screen-font-family-title'],
 						description: fontFamily,
 						onPress: () => {
 							setFontDialogueVisible(true);
 						}
 					},
 					{
-						title: localisedStrings["settings-screen-dark-text-colour-title"],
+						title: localisedStrings['settings-screen-dark-text-colour-title'],
 						description: darkTextColour,
 						onPress: () => {
 							setColourDialogueVisible(true);
 						}
 					},
 					{
-						title: localisedStrings["settings-screen-size-suggestions-title"],
+						title: localisedStrings['settings-screen-size-suggestions-title'],
 						description: sizeSuggestion.toString(),
 						onPress: () => {
 							setSizeSuggestionDialogueVisible(true);
 						}
 					},
 					{
-						title: localisedStrings["settings-screen-size-history-title"],
+						title: localisedStrings['settings-screen-size-history-title'],
 						description: sizeHistory.toString(),
 						onPress: () => {
 							setSizeHistoryDialogueVisible(true);
 						}
 					},
 					{
-						title: localisedStrings["clear-history-dialogue-title"],
+						title: localisedStrings['clear-history-dialogue-title'],
 						description: '',
 						onPress: () => {
 							setClearHistoryDialogueVisible(true);
 						}
 					},
 					{
-						title: localisedStrings["confirm-recreate-ngram-dialogue-title"],
-						description: localisedStrings["settings-screen-recreate-ngram-description"],
+						title: localisedStrings['confirm-recreate-ngram-dialogue-title'],
+						description: localisedStrings['settings-screen-recreate-ngram-description'],
 						onPress: () => {
 							setRecreateNgramDialogueVisible(true);
 						}

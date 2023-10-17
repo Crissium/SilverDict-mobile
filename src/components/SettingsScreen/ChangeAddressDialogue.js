@@ -17,7 +17,7 @@ export default function ChangeAddressDialogue(props) {
 				}
 			})
 			.catch((error) => {
-				alert(localisedStrings["change-address-dialogue-message-unable-to-connect"]);
+				alert(localisedStrings['change-address-dialogue-message-unable-to-connect']);
 			});
 	}
 
@@ -26,7 +26,7 @@ export default function ChangeAddressDialogue(props) {
 			<Dialog
 				visible={visible}
 				onDismiss={() => setVisible(false)}>
-				<Dialog.Title>{localisedStrings["change-address-dialogue-title"]}</Dialog.Title>
+				<Dialog.Title>{localisedStrings['change-address-dialogue-title']}</Dialog.Title>
 				<Dialog.Content>
 					<TextInput
 						inputMode='url'
@@ -49,12 +49,12 @@ export default function ChangeAddressDialogue(props) {
 					<Button onPress={() => {
 						setVisible(false);
 					}}>
-						{localisedStrings["generic-cancel"]}
+						{localisedStrings['generic-cancel']}
 					</Button>
 					<Button onPress={() => {
 						handleSubmit();
 					}}>
-						{localisedStrings["generic-ok"]}
+						{localisedStrings['generic-ok']}
 					</Button>
 				</Dialog.Actions>
 			</Dialog>
