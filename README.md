@@ -12,7 +12,7 @@ This is the mobile (Android & iOS) client of [SilverDict](https://github.com/Cri
 - [ ] Dictionary/Group management
 - [ ] Better dark mode support in the WebView
 - [ ] Two-column view on wider screens
-- [ ] Localisation
+- [x] Localisation
 
 For an envisaged project structure, please refer to the [mindmap](/doc/Structure.mm), drawn with FreePlane.
 
