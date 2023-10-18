@@ -2,4 +2,4 @@ files:
   - source: /src/translations/en-GB.json
     translation: /src/translations/%locale%.json
 pull_request_title: "l10n: new translations from Crowdin"
-commit_message: "l10n: new translations {fileName} ({languageName})"
+commit_message: "l10n: new translations {languageName}"
