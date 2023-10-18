@@ -1,5 +1,7 @@
 # Description
 
+[![Crowdin](https://badges.crowdin.net/silverdict-mobile/localized.svg)](https://crowdin.com/project/silverdict-mobile)
+
 This is the mobile (Android & iOS) client of [SilverDict](https://github.com/Crissium/SilverDict), still under active development.
 
 # Roadmap
