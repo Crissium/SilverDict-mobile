@@ -31,7 +31,7 @@ export function convertDictionaryCamelCaseToSnakeCase(dictionary) {
 
 export async function storePersistentData(key, value) {
 	try {
-		if (value && value.length > 0) {
+		if (value && value.length > 0 && value !== '{}') { // empty string and empty object
 			await AsyncStorage.setItem(key, value);
 		}
 	} catch (error) {

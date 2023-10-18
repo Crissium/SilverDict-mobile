@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { loadPersistentData, storePersistentData } from './utils';
-import { DEFAULT_SERVER_ADDRESS, DEFAULT_FONT_FAMILY, DEFAULT_DARK_TEXT_COLOUR } from './config';
+import { DEFAULT_SERVER_ADDRESS, DEFAULT_FONT_FAMILY, DEFAULT_DARK_TEXT_COLOUR, DEFAULT_ADDITIONAL_GOOGLE_FONTS_ENABLED_STATUS } from './config';
 import { loadDataFromJsonResponse, convertDictionarySnakeCaseToCamelCase } from './utils';
 import { localisedStrings } from './translations/l10n';
 
@@ -17,6 +17,7 @@ export function AppProvider({ children }) {
 
 	const [fontFamily, setFontFamily] = useState('');
 	const [darkTextColour, setDarkTextColour] = useState('');
+	const [scriptsWithAdditionalFonts, setScriptsWithAdditionalFonts] = useState({});
 
 	const [sizeSuggestion, setSizeSuggestion] = useState(10);
 	const [sizeHistory, setSizeHistory] = useState(100);
@@ -28,6 +29,8 @@ export function AppProvider({ children }) {
 		setFontFamily(storedFontFamily);
 		const storedDarkTextColour = await loadPersistentData('darkTextColour', DEFAULT_DARK_TEXT_COLOUR);
 		setDarkTextColour(storedDarkTextColour);
+		const storedScriptsWithAdditionalFonts = await loadPersistentData('scriptsWithAdditionalFonts', JSON.stringify(DEFAULT_ADDITIONAL_GOOGLE_FONTS_ENABLED_STATUS));
+		setScriptsWithAdditionalFonts(JSON.parse(storedScriptsWithAdditionalFonts));
 	}
 
 	async function storeServerAddress() {
@@ -42,6 +45,10 @@ export function AppProvider({ children }) {
 		await storePersistentData('darkTextColour', darkTextColour.toString());
 	}
 
+	async function storeScriptsWithAdditionalFonts() {
+		await storePersistentData('scriptsWithAdditionalFonts', JSON.stringify(scriptsWithAdditionalFonts));
+	}
+
 	useEffect(function () { loadStoredData(); }, []);
 
 	useEffect(function () { storeServerAddress(); }, [serverAddress]);
@@ -49,6 +56,8 @@ export function AppProvider({ children }) {
 	useEffect(function () { storeFontFamily(); }, [fontFamily]);
 
 	useEffect(function () { storeDarkTextColour(); }, [darkTextColour]);
+
+	useEffect(function () { storeScriptsWithAdditionalFonts(); }, [scriptsWithAdditionalFonts]);
 
 	async function fetchInitialData(
 		apiPrefix,
@@ -112,6 +121,8 @@ export function AppProvider({ children }) {
 				setFontFamily,
 				darkTextColour,
 				setDarkTextColour,
+				scriptsWithAdditionalFonts,
+				setScriptsWithAdditionalFonts,
 				sizeSuggestion,
 				setSizeSuggestion,
 				sizeHistory,

@@ -66,7 +66,7 @@ export default function QueryScreen({ navigation }) {
 		fetch(`${apiPrefix}/query/${nameActiveGroup}/${newQuery}?dicts=True`)
 			.then(loadDataFromJsonResponse)
 			.then((data) => {
-				setArticle('<div class="inner-article">' + data['articles'] + '</div>');
+				setArticle(data['articles']);
 				setNamesActiveDictionaries(data['dictionaries']);
 
 				fetch(`${apiPrefix}/management/history`)

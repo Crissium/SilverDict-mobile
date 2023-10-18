@@ -1,17 +1,9 @@
-import React, { useState } from "react";
-import { Button, Dialog, Portal, Text, TextInput } from "react-native-paper";
+import React from "react";
+import { Button, Dialog, Portal, RadioButton } from "react-native-paper";
 import { localisedStrings } from "../../translations/l10n";
 
 export default function ChangeFontDialogue(props) {
-	const { visible, setVisible, setFontFamily } = props;
-	const [fontFamilyBuffer, setFontFamilyBuffer] = useState('');
-
-	function handleSubmit() {
-		if (fontFamilyBuffer.length > 0) { 
-			setFontFamily(fontFamilyBuffer); 
-		}
-		setVisible(false);
-	}
+	const { visible, setVisible, fontFamily, setFontFamily } = props;
 
 	return (
 		<Portal>
@@ -20,30 +12,14 @@ export default function ChangeFontDialogue(props) {
 				onDismiss={() => setVisible(false)}>
 				<Dialog.Title>{localisedStrings['change-font-dialogue-title']}</Dialog.Title>
 				<Dialog.Content>
-					<Text>{localisedStrings['change-font-dialogue-content']}</Text>
-					<TextInput
-						style={{ backgroundColor: 'transparent' }}
-						placeholder='serif'
-						value={fontFamilyBuffer}
-						mode='outlined'
-						autoFocus={true}
-						autoCapitalize='none'
-						autoCorrect={false}
-						selectTextOnFocus={true}
-						blurOnSubmit={true}
-						onChangeText={(text) => setFontFamilyBuffer(text)}
-						onSubmitEditing={(e) => {
-							handleSubmit();
-						}} />
+					<RadioButton.Group onValueChange={value => setFontFamily(value)} value={fontFamily}>
+						<RadioButton.Item label={localisedStrings['change-font-dialogue-font-sans-serif']} value='sans-serif' />
+						<RadioButton.Item label={localisedStrings['change-font-dialogue-font-serif']} value='serif' />
+					</RadioButton.Group>
 				</Dialog.Content>
 				<Dialog.Actions>
 					<Button onPress={() => {
 						setVisible(false);
-					}}>
-						{localisedStrings['generic-cancel']}
-					</Button>
-					<Button onPress={() => {
-						handleSubmit();
 					}}>
 						{localisedStrings['generic-ok']}
 					</Button>

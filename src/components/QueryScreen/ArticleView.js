@@ -4,6 +4,7 @@ import AutoHeightWebView from 'react-native-autoheight-webview';
 import { Button, Dialog, Portal, Text, useTheme } from 'react-native-paper';
 import { useAppContext } from '../../AppContext';
 import { localisedStrings } from '../../translations/l10n';
+import { ADDITIONAL_GOOGLE_FONTS } from '../../config';
 
 function ConfirmSearchDialogue(props) {
 	const { visible, wordSelected, setWordSelected, setQuery, search } = props;
@@ -54,7 +55,7 @@ document.addEventListener('click', function (event) {
 	}
 });
 
-const articleElement = document.querySelector('.inner-article');
+const articleElement = document.querySelector('.article-container');
 articleElement.addEventListener('click', function (event) {
 	let targetElement = event.target;
 	while (targetElement !== articleElement) {
@@ -94,9 +95,33 @@ articleElement.addEventListener('click', function (event) {
 
 export default function ArticleView(props) {
 	const { serverAddress, article, textZoom, nameDictionaryToJumpTo, search, setQuery, findInPageRef } = props;
-	const { fontFamily, darkTextColour } = useAppContext();
+	const { fontFamily, darkTextColour, scriptsWithAdditionalFonts } = useAppContext();
 	const webref = useRef(null);
 	const [wordSelected, setWordSelected] = useState('');
+
+	const namesScripts = Object.entries(scriptsWithAdditionalFonts)
+		.filter(([key, value]) => value)
+		.map((ar) => ar[0]);
+	let namesAdditionalFonts = Object.entries(ADDITIONAL_GOOGLE_FONTS[fontFamily])
+		.filter(([script, fontName]) => namesScripts.includes(script))
+		.map((ar) => ar[1]);
+	namesAdditionalFonts = [...new Set(namesAdditionalFonts)];
+	const articleHtml = `
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link
+		rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=${namesAdditionalFonts.map((name) => name.replaceAll(' ', '+')).join('|')}">
+</head>
+<body>
+	<div class="article-container">
+		${article}
+	</div>
+</body>
+</html>
+`
 
 	const darkTextColourStylesheet = `
 body {
@@ -153,7 +178,7 @@ font[color=olivedrab]     { color: #ADFF2F !important; }
 				viewportContent={'width=device-width, user-scalable=no'}
 				customStyle={`
 * {
-	font-family: ${fontFamily};
+	font-family: ${namesAdditionalFonts.map((name) => `'${name}'`).join(', ')}${namesAdditionalFonts.length > 0 ? ', ' : ''} ${fontFamily};
 }
 
 .article-block {
@@ -192,7 +217,7 @@ audio::-webkit-media-controls-timeline {
 
 ${useTheme().dark ? darkTextColourStylesheet : ''}
     		`}
-				source={{ html: article, baseUrl: serverAddress }}
+				source={{ html: articleHtml, baseUrl: serverAddress }}
 				ref={webref}
 				onLoadEnd={() => {
 					webref.current.injectJavaScript(clickListenersScript);
