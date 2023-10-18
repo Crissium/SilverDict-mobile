@@ -111,9 +111,10 @@ export default function ArticleView(props) {
 <html>
 <head>
 	<meta charset="utf-8">
+	${namesAdditionalFonts.length > 0 ? `
 	<link
 		rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=${namesAdditionalFonts.map((name) => name.replaceAll(' ', '+')).join('|')}">
+		href="https://fonts.googleapis.com/css?family=${namesAdditionalFonts.map((name) => name.replaceAll(' ', '+')).join('|')}">` : ''}
 </head>
 <body>
 	<div class="article-container">
