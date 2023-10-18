@@ -29,43 +29,6 @@ export function convertDictionaryCamelCaseToSnakeCase(dictionary) {
 	};
 }
 
-export async function fetchInitialData(
-	apiPrefix,
-	setDictionaries,
-	setGroups,
-	setGroupings,
-	setHistory,
-	setSizeHistory,
-	setSizeSuggestion
-) {
-	try {
-		const [
-			dictionariesData,
-			groupsData,
-			groupingsData,
-			historyData,
-			sizeHistoryData,
-			sizeSuggestionData
-		] = await Promise.all([
-			fetch(`${apiPrefix}/management/dictionaries`).then(loadDataFromJsonResponse),
-			fetch(`${apiPrefix}/management/groups`).then(loadDataFromJsonResponse),
-			fetch(`${apiPrefix}/management/dictionary_groupings`).then(loadDataFromJsonResponse),
-			fetch(`${apiPrefix}/management/history`).then(loadDataFromJsonResponse),
-			fetch(`${apiPrefix}/management/history_size`).then(loadDataFromJsonResponse),
-			fetch(`${apiPrefix}/management/num_suggestions`).then(loadDataFromJsonResponse),
-		]);
-
-		setDictionaries(dictionariesData.map(convertDictionarySnakeCaseToCamelCase));
-		setGroups(groupsData);
-		setGroupings(groupingsData);
-		setHistory(historyData);
-		setSizeHistory(sizeHistoryData['size']);
-		setSizeSuggestion(sizeSuggestionData['size']);
-	} catch (error) {
-		alert('Failed to fetch data from the server. Please check your connection or change the server address and try again.');
-	}
-}
-
 export async function storePersistentData(key, value) {
 	try {
 		if (value && value.length > 0) {

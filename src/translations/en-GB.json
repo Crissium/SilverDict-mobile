@@ -34,5 +34,6 @@
 	"settings-screen-dark-text-colour-title": "Colour of the text in dark mode",
 	"settings-screen-size-suggestions-title": "Suggestion size",
 	"settings-screen-size-history-title": "History size",
-	"settings-screen-recreate-ngram-description": "It could be very slow."
+	"settings-screen-recreate-ngram-description": "It could be very slow.",
+	"app-context-message-failure-fetching-data": "Failed to fetch data from the server. Please check your connection or change the server address and try again."
 }

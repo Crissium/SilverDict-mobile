@@ -34,5 +34,6 @@
 	"settings-screen-dark-text-colour-title": "暗色模式下字体颜色",
 	"settings-screen-size-suggestions-title": "候选词数量",
 	"settings-screen-size-history-title": "历史记录大小",
-	"settings-screen-recreate-ngram-description": "可能会很慢"
+	"settings-screen-recreate-ngram-description": "可能会很慢",
+	"app-context-message-failure-fetching-data": "从服务器获取数据失败。请检查网络连接，或更改服务器地址并重试。"
 }

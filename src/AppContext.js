@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { fetchInitialData, loadPersistentData, storePersistentData } from './utils';
+import { loadPersistentData, storePersistentData } from './utils';
 import { DEFAULT_SERVER_ADDRESS, DEFAULT_FONT_FAMILY, DEFAULT_DARK_TEXT_COLOUR } from './config';
+import { loadDataFromJsonResponse, convertDictionarySnakeCaseToCamelCase } from './utils';
+import { localisedStrings } from './translations/l10n';
 
 const AppContext = createContext();
 
@@ -48,9 +50,42 @@ export function AppProvider({ children }) {
 
 	useEffect(function () { storeDarkTextColour(); }, [darkTextColour]);
 
+	async function fetchInitialData(
+		apiPrefix,
+		setDictionaries,
+		setGroups,
+		setGroupings,
+		setHistory,
+		setSizeHistory,
+		setSizeSuggestion
+	) {
+		try {
+			const [
+				dictionariesData, groupsData, groupingsData, historyData, sizeHistoryData, sizeSuggestionData
+			] = await Promise.all([
+				fetch(`${apiPrefix}/management/dictionaries`).then(loadDataFromJsonResponse),
+				fetch(`${apiPrefix}/management/groups`).then(loadDataFromJsonResponse),
+				fetch(`${apiPrefix}/management/dictionary_groupings`).then(loadDataFromJsonResponse),
+				fetch(`${apiPrefix}/management/history`).then(loadDataFromJsonResponse),
+				fetch(`${apiPrefix}/management/history_size`).then(loadDataFromJsonResponse),
+				fetch(`${apiPrefix}/management/num_suggestions`).then(loadDataFromJsonResponse),
+			]);
+
+			setDictionaries(dictionariesData.map(convertDictionarySnakeCaseToCamelCase));
+			setGroups(groupsData);
+			setGroupings(groupingsData);
+			setHistory(historyData);
+			setSizeHistory(sizeHistoryData['size']);
+			setSizeSuggestion(sizeSuggestionData['size']);
+		} catch (error) {
+			alert(localisedStrings['app-context-message-failure-fetching-data']);
+		}
+	}
+
 	useEffect(function () {
 		if (serverAddress.length > 0)
-			fetchInitialData(`${serverAddress}/api`,
+			fetchInitialData(
+				`${serverAddress}/api`,
 				setDictionaries,
 				setGroups,
 				setGroupings,
