@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Dialog, Portal, ProgressBar, Text } from 'react-native-paper';
+import { Dialog, Portal, ProgressBar } from 'react-native-paper';
+import ConfirmDialogue from '../common/ConfirmDialogue';
 import { loadDataFromJsonResponse } from '../../utils';
 import { localisedStrings } from '../../translations/l10n';
 
@@ -46,28 +47,12 @@ export default function ConfirmRecreateNgramDialogue(props) {
 	return (
 		<>
 			<InProgressDialogue visible={inProgress} />
-			<Portal>
-				<Dialog
-					visible={visible}
-					onDismiss={() => setVisible(false)}>
-					<Dialog.Title>{localisedStrings['confirm-recreate-ngram-dialogue-title']}</Dialog.Title>
-					<Dialog.Content>
-						<Text>{localisedStrings['confirm-recreate-ngram-dialogue-content']}</Text>
-					</Dialog.Content>
-					<Dialog.Actions>
-						<Button onPress={() => {
-							setVisible(false);
-						}}>
-							{localisedStrings['generic-no']}
-						</Button>
-						<Button onPress={() => {
-							handleConfirm();
-						}}>
-							{localisedStrings['generic-yes']}
-						</Button>
-					</Dialog.Actions>
-				</Dialog>
-			</Portal>
+			<ConfirmDialogue
+				visible={visible}
+				setVisible={setVisible}
+				title={localisedStrings['confirm-recreate-ngram-dialogue-title']}
+				content={localisedStrings['confirm-recreate-ngram-dialogue-content']}
+				onConfirm={handleConfirm} />
 		</>
 	);
 }
