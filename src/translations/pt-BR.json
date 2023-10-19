@@ -4,6 +4,7 @@
 	"generic-cancel": "Cancel",
 	"generic-ok": "OK",
 	"generic-edit": "Edit",
+	"generic-delete": "Delete",
 	"generic-alert-invalid-number": "Invalid number.",
 	"script-name-arabic": "Arabic",
 	"script-name-bengali": "Bengali",
@@ -44,8 +45,10 @@
 	"change-font-dialogue-font-serif": "serif",
 	"change-size-history-dialogue-message-failure": "Failed to update history size.",
 	"change-size-history-dialogue-title": "Change the size of history",
+	"change-size-history-dialogue-placeholder": "a non-negative integer",
 	"change-size-suggestion-dialogue-message-failure": "Failed to update the number of suggestions.",
 	"change-size-suggestion-dialogue-title": "Change the number of suggestions",
+	"change-size-suggestion-dialogue-placeholder": "a positive integer",
 	"clear-history-dialogue-message-failure": "Failed to clear history.",
 	"clear-history-dialogue-title": "Clear history",
 	"clear-history-dialogue-content": "Are you sure you want to clear history?",
@@ -62,5 +65,6 @@
 	"settings-screen-size-suggestions-title": "Suggestion size",
 	"settings-screen-size-history-title": "History size",
 	"settings-screen-recreate-ngram-description": "It could be very slow.",
-	"app-context-message-failure-fetching-data": "Failed to fetch data from the server. Please check your connection or change the server address and try again."
+	"app-context-message-failure-fetching-data": "Failed to fetch data from the server. Please check your connection or change the server address and try again.",
+	"dictionary-manager-edit-menu-edit": "Edit name"
 }
