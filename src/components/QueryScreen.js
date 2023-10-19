@@ -24,6 +24,10 @@ export default function QueryScreen({ navigation }) {
 	const [namesActiveDictionaries, setNamesActiveDictionaries] = useState([]);
 	const [nameDictionaryToJumpTo, setNameDictionaryToJumpTo] = useState('');
 
+	useEffect(function() {
+		setNameActiveGroup(groups[0].name);
+	}, [groups]);
+
 	useEffect(function () {
 		if (query.length === 0) {
 			setLatestSuggestionsTimestamp(Date.now());
