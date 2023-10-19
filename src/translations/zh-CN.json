@@ -4,6 +4,7 @@
 	"generic-cancel": "取消",
 	"generic-ok": "好",
 	"generic-edit": "编辑",
+	"generic-delete": "Delete",
 	"generic-alert-invalid-number": "无效数字。",
 	"script-name-arabic": "阿拉伯字母",
 	"script-name-bengali": "孟加拉文",
@@ -44,8 +45,10 @@
 	"change-font-dialogue-font-serif": "衬线字体（宋体）",
 	"change-size-history-dialogue-message-failure": "更新历史记录大小失败。",
 	"change-size-history-dialogue-title": "变更历史记录大小",
+	"change-size-history-dialogue-placeholder": "a non-negative integer",
 	"change-size-suggestion-dialogue-message-failure": "更新候选词数量失败。",
 	"change-size-suggestion-dialogue-title": "变更候选词数量",
+	"change-size-suggestion-dialogue-placeholder": "a positive integer",
 	"clear-history-dialogue-message-failure": "清空历史记录失败。",
 	"clear-history-dialogue-title": "清空历史记录",
 	"clear-history-dialogue-content": "确认清空历史记录？",
@@ -62,5 +65,6 @@
 	"settings-screen-size-suggestions-title": "候选词数量",
 	"settings-screen-size-history-title": "历史记录大小",
 	"settings-screen-recreate-ngram-description": "可能会很慢",
-	"app-context-message-failure-fetching-data": "从服务器获取数据失败。请检查网络连接，或更改服务器地址并重试。"
+	"app-context-message-failure-fetching-data": "从服务器获取数据失败。请检查网络连接，或更改服务器地址并重试。",
+	"dictionary-manager-edit-menu-edit": "Edit name"
 }
