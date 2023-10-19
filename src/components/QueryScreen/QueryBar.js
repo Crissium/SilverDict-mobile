@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Keyboard } from "react-native";
-import { Appbar } from "react-native-paper";
-import Input from "./Input";
-import DictionarySelection from "./DictionarySelection";
+import React, { useState } from 'react';
+import { Keyboard } from 'react-native';
+import { Appbar } from 'react-native-paper';
+import Input from './Input';
+import DictionarySelection from './DictionarySelection';
 
 export default function QueryBar(props) {
 	const { openDrawer, query, setQuery, textInputRef, handleInputSubmit, setArticle, dictionaries, groups, groupings, nameActiveGroup, setNameActiveGroup, namesActiveDictionaries, setNameDictionaryToJumpTo } = props;

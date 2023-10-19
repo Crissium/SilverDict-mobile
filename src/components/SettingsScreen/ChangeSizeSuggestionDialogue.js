@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Button, Dialog, Portal, TextInput } from "react-native-paper";
-import { JSON_HEADER, loadDataFromJsonResponse } from "../../utils";
-import { localisedStrings } from "../../translations/l10n";
+import React, { useState } from 'react';
+import { Button, Dialog, Portal, TextInput } from 'react-native-paper';
+import { JSON_HEADER, loadDataFromJsonResponse } from '../../utils';
+import { localisedStrings } from '../../translations/l10n';
 
 export default function ChangeSizeSuggestionDialogue(props) {
 	const { visible, setVisible, apiPrefix, setSizeSuggestion } = props;

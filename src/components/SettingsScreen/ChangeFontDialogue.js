@@ -1,6 +1,6 @@
-import React from "react";
-import { Button, Dialog, Portal, RadioButton } from "react-native-paper";
-import { localisedStrings } from "../../translations/l10n";
+import React from 'react';
+import { Button, Dialog, Portal, RadioButton } from 'react-native-paper';
+import { localisedStrings } from '../../translations/l10n';
 
 export default function ChangeFontDialogue(props) {
 	const { visible, setVisible, fontFamily, setFontFamily } = props;

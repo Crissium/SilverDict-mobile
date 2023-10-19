@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Button, Dialog, Portal, Text, TextInput } from "react-native-paper";
-import { localisedStrings } from "../../translations/l10n";
+import React, { useState } from 'react';
+import { Button, Dialog, Portal, Text, TextInput } from 'react-native-paper';
+import { localisedStrings } from '../../translations/l10n';
 
 export default function ChangeColourDialogue(props) {
 	const { visible, setVisible, setDarkTextColour } = props;

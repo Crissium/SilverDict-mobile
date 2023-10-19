@@ -1,6 +1,6 @@
-import React from "react";
-import { FlatList } from "react-native";
-import { List, Modal, Portal, useTheme } from "react-native-paper";
+import React from 'react';
+import { FlatList } from 'react-native';
+import { List, Modal, Portal, useTheme } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
 
 function DictionaryItem(props) {

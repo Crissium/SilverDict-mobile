@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { View } from "react-native";
-import { loadDataFromJsonResponse } from "../utils";
-import QueryBar from "./QueryScreen/QueryBar";
-import QueryContent from "./QueryScreen/QueryContent";
-import { useAppContext } from "../AppContext";
-import { localisedStrings } from "../translations/l10n";
+import React, { useState, useEffect, useRef } from 'react';
+import { View } from 'react-native';
+import { loadDataFromJsonResponse } from '../utils';
+import QueryBar from './QueryScreen/QueryBar';
+import QueryContent from './QueryScreen/QueryContent';
+import { useAppContext } from '../AppContext';
+import { localisedStrings } from '../translations/l10n';
 
 export default function QueryScreen({ navigation }) {
 	const { serverAddress, dictionaries, groups, groupings, history, setHistory, sizeSuggestion } = useAppContext();

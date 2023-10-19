@@ -1,7 +1,7 @@
-import React from "react";
-import { Button, Dialog, Portal, Text } from "react-native-paper";
-import { loadDataFromJsonResponse } from "../../utils";
-import { localisedStrings } from "../../translations/l10n";
+import React from 'react';
+import { Button, Dialog, Portal, Text } from 'react-native-paper';
+import { loadDataFromJsonResponse } from '../../utils';
+import { localisedStrings } from '../../translations/l10n';
 
 export default function ConfirmClearHistoryDialogue(props) {
 	const { visible, setVisible, apiPrefix, setHistory } = props;

@@ -23,9 +23,19 @@ export default function App() {
 				}}
 				theme={drawerTheme}
 			>
-				<Drawer.Navigator initialRouteName='Query' drawerContent={(props) => <DrawerContent {...props} />}>
-					<Drawer.Screen name='Query' component={QueryScreen} options={{ headerShown: false }} />
-					<Drawer.Screen name='Settings' component={SettingsScreen} options={{ headerShown: false }} />
+				<Drawer.Navigator
+					initialRouteName='Query'
+					drawerContent={(props) => <DrawerContent {...props} />}
+				>
+					<Drawer.Screen
+						name='Query'
+						component={QueryScreen}
+						options={{ headerShown: false }} />
+					<Drawer.Screen
+						name='Settings'
+						component={SettingsScreen}
+						options={{ headerShown: false }} />
+					
 				</Drawer.Navigator>
 			</NavigationContainer>
 		</AppProvider>

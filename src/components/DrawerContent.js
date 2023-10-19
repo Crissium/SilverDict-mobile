@@ -1,8 +1,8 @@
-import React from "react";
-import { View } from "react-native";
-import { DrawerContentScrollView } from "@react-navigation/drawer";
-import { Drawer } from "react-native-paper";
-import { localisedStrings } from "../translations/l10n";
+import React from 'react';
+import { View } from 'react-native';
+import { DrawerContentScrollView } from '@react-navigation/drawer';
+import { Drawer } from 'react-native-paper';
+import { localisedStrings } from '../translations/l10n';
 
 export default function DrawerContent(props) {
 	return (

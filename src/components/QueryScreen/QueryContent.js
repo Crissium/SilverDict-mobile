@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import { FlatList, View } from "react-native";
-import { List } from "react-native-paper";
-import { Keyboard } from "react-native";
-import ArticleView from "./ArticleView";
-import ArticleBottomBar from "./ArticleBottomBar";
-import { loadPersistentData, storePersistentData, isRTL } from "../../utils";
-import { DEFAULT_TEXT_ZOOM } from "../../config";
+import React, { useEffect, useRef, useState } from 'react';
+import { FlatList, View } from 'react-native';
+import { List } from 'react-native-paper';
+import { Keyboard } from 'react-native';
+import ArticleView from './ArticleView';
+import ArticleBottomBar from './ArticleBottomBar';
+import { loadPersistentData, storePersistentData, isRTL } from '../../utils';
+import { DEFAULT_TEXT_ZOOM } from '../../config';
 
 function WordItem(props) {
 	const { word, search } = props;

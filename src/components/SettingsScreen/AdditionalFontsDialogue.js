@@ -1,7 +1,7 @@
-import React from "react";
-import { FlatList } from "react-native";
+import React from 'react';
+import { FlatList } from 'react-native';
 import { Button, Checkbox, Dialog, Portal, Text } from 'react-native-paper';
-import { localisedStrings } from "../../translations/l10n";
+import { localisedStrings } from '../../translations/l10n';
 
 function Item(props) {
 	const { scriptName, enabled, setEnabled } = props;

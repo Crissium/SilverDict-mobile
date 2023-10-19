@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { FlatList, View } from "react-native";
-import { Appbar, List } from "react-native-paper";
-import ChangeAddressDialogue from "./SettingsScreen/ChangeAddressDialogue";
-import ChangeFontDialogue from "./SettingsScreen/ChangeFontDialogue";
-import AdditionalFontsDialogue from "./SettingsScreen/AdditionalFontsDialogue";
-import ChangeColourDialogue from "./SettingsScreen/ChangeColourDialogue";
-import ChangeSizeSuggestionDialogue from "./SettingsScreen/ChangeSizeSuggestionDialogue";
-import ChangeSizeHistoryDialogue from "./SettingsScreen/ChangeSizeHistoryDialogue";
-import ConfirmClearHistoryDialogue from "./SettingsScreen/ConfirmClearHistoryDialogue";
-import ConfirmRecreateNgramDialogue from "./SettingsScreen/ConfirmRecreateNgramDialogue";
-import { useAppContext } from "../AppContext";
-import { localisedStrings } from "../translations/l10n";
+import React, { useState } from 'react';
+import { FlatList, View } from 'react-native';
+import { Appbar, List } from 'react-native-paper';
+import ChangeAddressDialogue from './SettingsScreen/ChangeAddressDialogue';
+import ChangeFontDialogue from './SettingsScreen/ChangeFontDialogue';
+import AdditionalFontsDialogue from './SettingsScreen/AdditionalFontsDialogue';
+import ChangeColourDialogue from './SettingsScreen/ChangeColourDialogue';
+import ChangeSizeSuggestionDialogue from './SettingsScreen/ChangeSizeSuggestionDialogue';
+import ChangeSizeHistoryDialogue from './SettingsScreen/ChangeSizeHistoryDialogue';
+import ConfirmClearHistoryDialogue from './SettingsScreen/ConfirmClearHistoryDialogue';
+import ConfirmRecreateNgramDialogue from './SettingsScreen/ConfirmRecreateNgramDialogue';
+import { useAppContext } from '../AppContext';
+import { localisedStrings } from '../translations/l10n';
 
 export default function SettingsScreen({ navigation }) {
 	const { serverAddress, setServerAddress, fontFamily, setFontFamily, scriptsWithAdditionalFonts, setScriptsWithAdditionalFonts, darkTextColour, setDarkTextColour, sizeSuggestion, setSizeSuggestion, sizeHistory, setSizeHistory, setHistory } = useAppContext();
