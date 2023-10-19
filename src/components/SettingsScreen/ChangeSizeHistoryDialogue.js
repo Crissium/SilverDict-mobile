@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { Button, Dialog, Portal, TextInput } from 'react-native-paper';
+import React from 'react';
+import TextEditorDialogue from '../common/TextEditorDialogue';
 import { JSON_HEADER, loadDataFromJsonResponse } from '../../utils';
 import { localisedStrings } from '../../translations/l10n';
 
 export default function ChangeSizeHistoryDialogue(props) {
-	const { visible, setVisible, apiPrefix, setHistory, setSizeHistory } = props;
-	const [sizeBuffer, setSizeBuffer] = useState('');
+	const { visible, setVisible, apiPrefix, setHistory, sizeHistory, setSizeHistory } = props;
 
-	function handleSubmit() {
+	function handleSubmit(sizeBuffer) {
 		let newSize;
 		try {
 			newSize = parseInt(sizeBuffer);
@@ -34,41 +33,16 @@ export default function ChangeSizeHistoryDialogue(props) {
 	}
 
 	return (
-		<Portal>
-			<Dialog
-				visible={visible}
-				onDismiss={() => setVisible(false)}>
-				<Dialog.Title>{localisedStrings['change-size-history-dialogue-title']}</Dialog.Title>
-				<Dialog.Content>
-					<TextInput
-						style={{ backgroundColor: 'transparent' }}
-						inputMode='numeric'
-						value={sizeBuffer}
-						mode='outlined'
-						autoFocus={true}
-						autoCapitalize='none'
-						autoComplete='off'
-						autoCorrect={false}
-						selectTextOnFocus={true}
-						blurOnSubmit={true}
-						onChangeText={(text) => setSizeBuffer(text)}
-						onSubmitEditing={(e) => {
-							handleSubmit();
-						}} />
-				</Dialog.Content>
-				<Dialog.Actions>
-					<Button onPress={() => {
-						setVisible(false);
-					}}>
-						{localisedStrings['generic-cancel']}
-					</Button>
-					<Button onPress={() => {
-						handleSubmit();
-					}}>
-						{localisedStrings['generic-ok']}
-					</Button>
-				</Dialog.Actions>
-			</Dialog>
-		</Portal>
+		<TextEditorDialogue
+			visible={visible}
+			setVisible={setVisible}
+			title={localisedStrings['change-size-history-dialogue-title']}
+			originalValue={sizeHistory.toString()}
+			handleSubmit={handleSubmit}
+			inputMode='numeric'
+			placeholder={localisedStrings['change-size-history-dialogue-placeholder']}
+			autoCapitalize='none'
+			autoCorrect={false}
+		/>
 	);
 }

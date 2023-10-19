@@ -113,17 +113,20 @@ export default function SettingsScreen({ navigation }) {
 			<ChangeColourDialogue
 				visible={colourDialogueVisible}
 				setVisible={setColourDialogueVisible}
+				darkTextColour={darkTextColour}
 				setDarkTextColour={setDarkTextColour} />
 			<ChangeSizeSuggestionDialogue
 				visible={sizeSuggestionDialogueVisible}
 				setVisible={setSizeSuggestionDialogueVisible}
 				apiPrefix={`${serverAddress}/api`}
+				sizeSuggestion={sizeSuggestion}
 				setSizeSuggestion={setSizeSuggestion} />
 			<ChangeSizeHistoryDialogue
 				visible={sizeHistoryDialogueVisible}
 				setVisible={setSizeHistoryDialogueVisible}
 				apiPrefix={`${serverAddress}/api`}
 				setHistory={setHistory}
+				sizeHistory={sizeHistory}
 				setSizeHistory={setSizeHistory} />
 			<ConfirmClearHistoryDialogue
 				visible={clearHistoryDialogueVisible}
