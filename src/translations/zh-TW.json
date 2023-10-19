@@ -4,6 +4,7 @@
 	"generic-cancel": "取消",
 	"generic-ok": "好",
 	"generic-edit": "編輯",
+	"generic-delete": "Delete",
 	"generic-alert-invalid-number": "\"無效數字。",
 	"script-name-arabic": "阿拉伯字母",
 	"script-name-bengali": "孟加拉文",
@@ -44,8 +45,10 @@
 	"change-font-dialogue-font-serif": "serif",
 	"change-size-history-dialogue-message-failure": "Failed to update history size.",
 	"change-size-history-dialogue-title": "Change the size of history",
+	"change-size-history-dialogue-placeholder": "a non-negative integer",
 	"change-size-suggestion-dialogue-message-failure": "Failed to update the number of suggestions.",
 	"change-size-suggestion-dialogue-title": "Change the number of suggestions",
+	"change-size-suggestion-dialogue-placeholder": "a positive integer",
 	"clear-history-dialogue-message-failure": "Failed to clear history.",
 	"clear-history-dialogue-title": "Clear history",
 	"clear-history-dialogue-content": "Are you sure you want to clear history?",
@@ -62,5 +65,6 @@
 	"settings-screen-size-suggestions-title": "Suggestion size",
 	"settings-screen-size-history-title": "History size",
 	"settings-screen-recreate-ngram-description": "可能會很慢",
-	"app-context-message-failure-fetching-data": "從伺服器獲取資料失敗。請檢查網路連線，或更改伺服器地址並重試。"
+	"app-context-message-failure-fetching-data": "從伺服器獲取資料失敗。請檢查網路連線，或更改伺服器地址並重試。",
+	"dictionary-manager-edit-menu-edit": "Edit name"
 }
