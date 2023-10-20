@@ -14,6 +14,11 @@ export default function DrawerContent(props) {
 					onPress={() => props.navigation.navigate('Query')}
 				/>
 				<Drawer.Item
+					icon='book-cog'
+					label={localisedStrings['drawer-library-label']}
+					onPress={() => props.navigation.navigate('Library')}
+				/>
+				<Drawer.Item
 					icon='cog'
 					label={localisedStrings['drawer-settings-label']}
 					onPress={() => props.navigation.navigate('Settings')}

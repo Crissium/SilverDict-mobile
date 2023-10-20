@@ -22,6 +22,9 @@ export function AppProvider({ children }) {
 	const [sizeSuggestion, setSizeSuggestion] = useState(10);
 	const [sizeHistory, setSizeHistory] = useState(100);
 
+	const [formats, setFormats] = useState([]);
+	const [sources, setSources] = useState([]);
+
 	async function loadStoredData() {
 		const storedServerAddress = await loadPersistentData('serverAddress', DEFAULT_SERVER_ADDRESS);
 		setServerAddress(storedServerAddress);
@@ -70,7 +73,14 @@ export function AppProvider({ children }) {
 	) {
 		try {
 			const [
-				dictionariesData, groupsData, groupingsData, historyData, sizeHistoryData, sizeSuggestionData
+				dictionariesData,
+				groupsData,
+				groupingsData,
+				historyData,
+				sizeHistoryData,
+				sizeSuggestionData,
+				formatsData,
+				sourcesData
 			] = await Promise.all([
 				fetch(`${apiPrefix}/management/dictionaries`).then(loadDataFromJsonResponse),
 				fetch(`${apiPrefix}/management/groups`).then(loadDataFromJsonResponse),
@@ -78,6 +88,8 @@ export function AppProvider({ children }) {
 				fetch(`${apiPrefix}/management/history`).then(loadDataFromJsonResponse),
 				fetch(`${apiPrefix}/management/history_size`).then(loadDataFromJsonResponse),
 				fetch(`${apiPrefix}/management/num_suggestions`).then(loadDataFromJsonResponse),
+				fetch(`${apiPrefix}/management/formats`).then(loadDataFromJsonResponse),
+				fetch(`${apiPrefix}/management/sources`).then(loadDataFromJsonResponse)
 			]);
 
 			setDictionaries(dictionariesData.map(convertDictionarySnakeCaseToCamelCase));
@@ -86,6 +98,8 @@ export function AppProvider({ children }) {
 			setHistory(historyData);
 			setSizeHistory(sizeHistoryData['size']);
 			setSizeSuggestion(sizeSuggestionData['size']);
+			setFormats(formatsData);
+			setSources(sourcesData);
 		} catch (error) {
 			alert(localisedStrings['app-context-message-failure-fetching-data']);
 		}
@@ -126,7 +140,10 @@ export function AppProvider({ children }) {
 				sizeSuggestion,
 				setSizeSuggestion,
 				sizeHistory,
-				setSizeHistory
+				setSizeHistory,
+				formats,
+				sources,
+				setSources
 			}}
 		>
 			{children}

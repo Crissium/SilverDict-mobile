@@ -3,7 +3,7 @@ import { Button, Dialog, Text, TextInput, Portal } from 'react-native-paper';
 import { localisedStrings } from '../../translations/l10n';
 
 export default function TextEditorDialogue(props) {
-	const { visible, setVisible, title, content, originalValue, handleSubmit, inputMode, placeholder, autoCapitalize,  autoCorrect } = props;
+	const { visible, setVisible, title, content, originalValue, handleSubmit, inputMode, placeholder, autoCapitalize, autoCorrect } = props;
 	const [buffer, setBuffer] = useState(originalValue);
 
 	return (

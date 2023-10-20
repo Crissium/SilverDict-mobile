@@ -25,8 +25,8 @@ export default function QueryScreen({ navigation }) {
 	const [nameDictionaryToJumpTo, setNameDictionaryToJumpTo] = useState('');
 
 	useEffect(function() {
-		setNameActiveGroup(groups[0].name);
-	}, [groups]);
+		setNameActiveGroup('Default Group');
+	}, [groups.length]);
 
 	useEffect(function () {
 		if (query.length === 0) {

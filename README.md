@@ -2,7 +2,7 @@
 
 [![Crowdin](https://badges.crowdin.net/silverdict-mobile/localized.svg)](https://crowdin.com/project/silverdict-mobile)
 
-This is the mobile (Android & iOS) client of [SilverDict](https://github.com/Crissium/SilverDict), still under active development.
+This is the mobile (Android & iOS) client of [SilverDict](https://github.com/Crissium/SilverDict), considered feature-complete now.
 
 # Roadmap
 
@@ -11,12 +11,10 @@ This is the mobile (Android & iOS) client of [SilverDict](https://github.com/Cri
 - [x] Zoom in/out and remember the zoom level
 - [x] Find in page
 - [x] Tap to search
-- [ ] Dictionary/Group management
+- [X] Dictionary/Group management
 - [ ] Better dark mode support in the WebView
 - [ ] Two-column view on wider screens
 - [x] Localisation
-
-For an envisaged project structure, please refer to the [mindmap](/doc/Structure.mm), drawn with FreePlane.
 
 ## Issues
 
