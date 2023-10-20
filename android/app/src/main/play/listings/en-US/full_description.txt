@@ -1,0 +1,3 @@
+This is the Android client of the SilverDict dictionary server, a web-based alternative to GoldenDict. This mobile client has all the expected features of a dictionary app, including lookup, history, suggest-as-you-type, dictionary management, and more.
+
+You can read more about the server at its repository: https://github.com/Crissium/SilverDict

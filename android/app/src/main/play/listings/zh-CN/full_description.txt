@@ -1,0 +1,3 @@
+这是 SilverDict 词典服务器的 Android 客户端，是基于 Web 技术的 GoldenDict 替代品。 该移动客户端具有词典应用程序的所有预期功能，包括查找、历史记录、输入建议、词典管理等。
+
+您可以在其 GitHub 仓库中阅读有关该服务器的更多信息：https://github.com/Crissium/SilverDict

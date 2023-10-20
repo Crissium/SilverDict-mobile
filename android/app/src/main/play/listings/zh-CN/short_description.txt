@@ -1,0 +1,1 @@
+SilverDict 词典服务器 Android 客户端
