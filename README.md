@@ -2,7 +2,11 @@
 
 [![Crowdin](https://badges.crowdin.net/silverdict-mobile/localized.svg)](https://crowdin.com/project/silverdict-mobile)
 
-This is the mobile (Android & iOS) client of [SilverDict](https://github.com/Crissium/SilverDict), considered feature-complete now.
+[Guide](https://github.com/Crissium/SilverDict/wiki/android)
+
+This is the mobile (Android ~~& iOS~~) client of [SilverDict](https://github.com/Crissium/SilverDict), considered feature-complete now.
+
+I cannot develop the iOS version because I don't have a Mac or a 99 USD/year Apple Developer account. If you would like to help, please contact me.
 
 # Roadmap
 
