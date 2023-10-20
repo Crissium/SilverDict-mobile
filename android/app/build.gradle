@@ -79,7 +79,7 @@ android {
 		minSdkVersion rootProject.ext.minSdkVersion
 		targetSdkVersion rootProject.ext.targetSdkVersion
 		versionCode 1
-		versionName "1.0.0"
+		versionName "1.0.1"
 	}
 	signingConfigs {
 		debug {
@@ -112,8 +112,8 @@ android {
 		abi {
 			reset()
 			enable true
-			include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
-			universalApk true
+			include "arm64-v8a"
+			universalApk false
 		}
 	}
 
