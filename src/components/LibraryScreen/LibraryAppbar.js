@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Appbar, useTheme } from 'react-native-paper';
+import { Appbar } from 'react-native-paper';
 import AddDictionaryDialogue from './DictionaryManager/AddDictionaryDialogue';
 import AddGroupDialogue from './GroupManager/AddGroupDialogue';
 import AddSourceDialogue from './SourceManager/AddSourceDialogue';
@@ -32,29 +32,12 @@ export default function LibraryAppbar(props) {
 			});
 	}
 
-	const iconColour = useTheme().colors.onSurface;
-	const actions = {
-		'Dictionaries': <Appbar.Action
-			icon='plus'
-			onPress={() => setAddDictionaryDialogueVisible(true)}
-		/>,
-		'Groups': <Appbar.Action
-			icon='plus'
-			onPress={() => setAddGroupDialogueVisible(true)}
-		/>,
-		'Sources': <>
-			<Appbar.Action
-				icon='plus'
-				color={iconColour}
-				onPress={() => setAddSourceDialogueVisible(true)}
-			/>
-			<Appbar.Action
-				icon='refresh'
-				color={iconColour}
-				onPress={() => handleRescan()}
-			/>
-		</>
-	}
+	const actionsOnPress = {
+		'Dictionaries': () => setAddDictionaryDialogueVisible(true),
+		'Groups': () => setAddGroupDialogueVisible(true),
+		'Sources': () => setAddSourceDialogueVisible(true)
+	};
+
 	return (
 		<Appbar.Header>
 			<Appbar.Action
@@ -64,7 +47,15 @@ export default function LibraryAppbar(props) {
 			<Appbar.Content
 				title={localisedStrings['drawer-library-label']}
 			/>
-			{actions[nameActiveTab]}
+			{nameActiveTab === 'Sources' &&
+				<Appbar.Action
+					icon='refresh'
+					onPress={() => handleRescan()}
+				/>}
+			<Appbar.Action
+				icon='plus'
+				onPress={actionsOnPress[nameActiveTab]}
+			/>
 			<AddDictionaryDialogue
 				visible={addDictionaryDialogueVisible}
 				setVisible={setAddDictionaryDialogueVisible}
