@@ -2,6 +2,10 @@
 
 [![Crowdin](https://badges.crowdin.net/silverdict-mobile/localized.svg)](https://crowdin.com/project/silverdict-mobile)
 
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+    alt="Get it on F-Droid"
+    height="80">](https://f-droid.org/packages/com.gmail.blandilyte.silverdict)
+
 [Guide](https://github.com/Crissium/SilverDict/wiki/android)
 
 This is the mobile (Android ~~& iOS~~) client of [SilverDict](https://github.com/Crissium/SilverDict), considered feature-complete now.
