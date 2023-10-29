@@ -19,10 +19,11 @@ I cannot develop the iOS version because I don't have a Mac or a 99 USD/year App
 - [x] Zoom in/out and remember the zoom level
 - [x] Find in page
 - [x] Tap to search
-- [X] Dictionary/Group management
+- [x] Dictionary/Group management
 - [ ] Better dark mode support in the WebView
 - [ ] Two-column view on wider screens
 - [x] Localisation
+- [ ] Launch SilverDict from context menu (that is, when you select a word in another app, you can choose to search for it in SilverDict. Also this would make it integrate better with e-book readers.)
 
 ## Issues
 
