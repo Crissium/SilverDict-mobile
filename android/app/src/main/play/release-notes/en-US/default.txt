@@ -1,2 +1,2 @@
-New Feature:
-Dictionary/Group management
+Fix:
+Tweak the colour of selects to match that of the text.

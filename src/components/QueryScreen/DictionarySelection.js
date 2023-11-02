@@ -33,6 +33,18 @@ export default function DictionarySelection(props) {
 						<RNPickerSelect
 							darkTheme={theme.dark}
 							useNativeAndroidPickerStyle={false}
+							style={{
+								inputIOS: {
+									padding: 0,
+									borderWidth: 0,
+									color: theme.colors.text,
+								},
+								inputAndroid: {
+									padding: 0,
+									borderWidth: 0,
+									color: theme.colors.text,
+								},
+							}}
 							items={groups.map((group) => {
 								return {
 									label: group.name,

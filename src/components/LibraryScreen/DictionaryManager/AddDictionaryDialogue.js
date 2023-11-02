@@ -6,7 +6,7 @@ import { JSON_HEADER, loadDataFromJsonResponse, convertDictionarySnakeCaseToCame
 import { localisedStrings } from '../../../translations/l10n';
 
 export default function AddDictionaryDialogue(props) {
-	const isDark = useTheme().dark;
+	const theme = useTheme();
 	const { visible, setVisible } = props;
 	const { serverAddress, formats, dictionaries, setDictionaries, groups, setGroupings } = useAppContext();
 	const [newDictionaryDisplayName, setNewDictionaryDisplayName] = useState('');
@@ -95,8 +95,20 @@ export default function AddDictionaryDialogue(props) {
 					/>
 					<Text>{localisedStrings['add-dictionary-dialogue-content-format']}</Text>
 					<RNPickerSelect
-						darkTheme={isDark}
+						darkTheme={theme.dark}
 						useNativeAndroidPickerStyle={false}
+						style={{
+							inputIOS: {
+								padding: 0,
+								borderWidth: 0,
+								color: theme.colors.text,
+							},
+							inputAndroid: {
+								padding: 0,
+								borderWidth: 0,
+								color: theme.colors.text,
+							},
+						}}
 						items={formats.map((format) => {
 							return {
 								label: format,
@@ -108,8 +120,20 @@ export default function AddDictionaryDialogue(props) {
 					/>
 					<Text>{localisedStrings['add-dictionary-dialogue-content-group']}</Text>
 					<RNPickerSelect
-						darkTheme={isDark}
+						darkTheme={theme.dark}
 						useNativeAndroidPickerStyle={false}
+						style={{
+							inputIOS: {
+								padding: 0,
+								borderWidth: 0,
+								color: theme.colors.text,
+							},
+							inputAndroid: {
+								padding: 0,
+								borderWidth: 0,
+								color: theme.colors.text,
+							},
+						}}
 						items={groups.map((group) => {
 							return {
 								label: group.name,
