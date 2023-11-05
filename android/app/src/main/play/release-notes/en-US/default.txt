@@ -1,2 +1,3 @@
 Fix:
 Tweak the colour of selects to match that of the text.
+Crash when the search term contains %.

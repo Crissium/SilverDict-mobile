@@ -63,9 +63,15 @@ export default function QueryScreen({ navigation }) {
 			return;
 		}
 
-		newQuery = decodeURIComponent(newQuery);
-		setQuery(newQuery);
-		newQuery = encodeURIComponent(newQuery);
+		try {
+			newQuery = decodeURIComponent(newQuery);
+			setQuery(newQuery);
+			newQuery = encodeURIComponent(newQuery);
+		}
+		catch (error) {
+			setQuery(newQuery);
+			newQuery = encodeURIComponent(newQuery);
+		}
 
 		fetch(`${apiPrefix}/query/${nameActiveGroup}/${newQuery}?dicts=True`)
 			.then(loadDataFromJsonResponse)
