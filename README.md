@@ -28,6 +28,7 @@ I cannot develop the iOS version because I don't have a Mac or a 99 USD/year App
 ## Issues
 
 - [ ] Dynamic screen width in WebView (if you rotate from portrait to landscape, the WebView will not be resized)
+- [ ] Cache the search results in local history along with the position in the page
 
 # Development
 

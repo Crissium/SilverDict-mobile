@@ -1,3 +1,2 @@
 Fix:
-Tweak the colour of selects to match that of the text.
-Crash when the search term contains %.
+Retain the old search term when a suggestion is selected. This is the behaviour of GoldenDict.

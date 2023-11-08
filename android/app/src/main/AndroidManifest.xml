@@ -1,8 +1,8 @@
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.gmail.blandilyte.silverdict"
-	android:versionCode="4"
-	android:versionName="1.0.6">
+	android:versionCode="5"
+	android:versionName="1.0.7">
 
 	<uses-permission android:name="android.permission.INTERNET" />
 

@@ -78,8 +78,8 @@ android {
 		applicationId "com.gmail.blandilyte.silverdict"
 		minSdkVersion rootProject.ext.minSdkVersion
 		targetSdkVersion rootProject.ext.targetSdkVersion
-		versionCode 4
-		versionName "1.0.6"
+		versionCode 5
+		versionName "1.0.7"
 	}
 	signingConfigs {
 		debug {
