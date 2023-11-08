@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Dialog, Portal, Text } from 'react-native-paper';
 import { localisedStrings } from '../../translations/l10n';
 
-export default function(props) {
+export default function ConfirmDialogue(props) {
 	const { visible, setVisible, title, content, onConfirm } = props;
 
 	return (
@@ -20,9 +20,7 @@ export default function(props) {
 					}}>
 						{localisedStrings['generic-no']}
 					</Button>
-					<Button onPress={() => {
-						onConfirm();
-					}}>
+					<Button onPress={onConfirm}>
 						{localisedStrings['generic-yes']}
 					</Button>
 				</Dialog.Actions>
