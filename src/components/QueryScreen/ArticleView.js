@@ -125,6 +125,30 @@ export default function ArticleView(props) {
 `
 
 	const darkTextColourStylesheet = `
+/* lighten dark colors */
+[style*="color: blue;"]           { color: #8882FF !important; }
+[style*="color: mediumblue;"]     { color: #8882FF !important; }
+[style*="color: darkblue;"]       { color: #8882FF !important; }
+[style*="color: darkslateblue;"]  { color: #8882FF !important; }
+[style*="color: midnightblue;"]   { color: #8882FF !important; }
+[style*="color: navy;"]           { color: #8882FF !important; }
+[style*="color: darkmagenta;"]    { color: #FF22FF !important; }
+[style*="color: purple;"]         { color: #FF22FF !important; }
+[style*="color: indigo;"]         { color: #B959FF !important; }
+[style*="color: darkred;"]        { color: #D20000 !important; }
+[style*="color: maroon;"]         { color: #D20000 !important; }
+[style*="color: darkslategray;"]  { color: #768390 !important; }
+[style*="color: dimgray;"]        { color: #A7A7A7 !important; }
+[style*="color: green;"]          { color: #32CD32 !important; }
+[style*="color: darkgreen;"]      { color: #32CD32 !important; }
+[style*="color: forestgreen;"]    { color: #32CD32 !important; }
+[style*="color: seagreen;"]       { color: #00FF7F !important; }
+[style*="color: mediumseagreen;"] { color: #00FF7F !important; }
+[style*="color: olive;"]          { color: #F0E68C !important; }
+[style*="color: darkolivegreen;"] { color: #ADFF2F !important; }
+[style*="color: olivedrab;"]      { color: #ADFF2F !important; }
+[style*="color: grey;"]           { color: #887C66 !important; }
+
 body {
 	color: ${darkTextColour} !important;
 }
@@ -137,29 +161,6 @@ a {
 	background: #0080ff;
 	color: #ffffff;
 }
-
-/* lighten dark colors */
-font[color=blue]          { color: #8882FF !important; }
-font[color=mediumblue]    { color: #8882FF !important; }
-font[color=darkblue]      { color: #8882FF !important; }
-font[color=darkslateblue] { color: #8882FF !important; }
-font[color=midnightblue]  { color: #8882FF !important; }
-font[color=navy]          { color: #8882FF !important; }
-font[color=darkmagenta]   { color: #FF22FF !important; }
-font[color=purple]        { color: #FF22FF !important; }
-font[color=indigo]        { color: #B959FF !important; }
-font[color=darkred]       { color: #D20000 !important; }
-font[color=maroon]        { color: #D20000 !important; }
-font[color=darkslategray] { color: #768390 !important; }
-font[color=dimgray]       { color: #A7A7A7 !important; }
-font[color=green]         { color: #32CD32 !important; }
-font[color=darkgreen]     { color: #32CD32 !important; }
-font[color=forestgreen]   { color: #32CD32 !important; }
-font[color=seagreen]      { color: #00FF7F !important; }
-font[color=mediumseagreen]{ color: #00FF7F !important; }
-font[color=olive]         { color: #F0E68C !important; }
-font[color=darkolivegreen]{ color: #ADFF2F !important; }
-font[color=olivedrab]     { color: #ADFF2F !important; }
 `
 
 	useEffect(function () {
