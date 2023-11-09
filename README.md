@@ -20,7 +20,6 @@ I cannot develop the iOS version because I don't have a Mac or a 99 USD/year App
 - [x] Find in page
 - [x] Tap to search
 - [x] Dictionary/Group management
-- [ ] Better dark mode support in the WebView
 - [ ] Two-column view on wider screens
 - [x] Localisation
 - [ ] Launch SilverDict from context menu (that is, when you select a word in another app, you can choose to search for it in SilverDict. Also this would make it integrate better with e-book readers.)
@@ -28,7 +27,6 @@ I cannot develop the iOS version because I don't have a Mac or a 99 USD/year App
 ## Issues
 
 - [ ] Dynamic screen width in WebView (if you rotate from portrait to landscape, the WebView will not be resized)
-- [ ] Cache the search results in local history along with the position in the page
 
 # Development
 
