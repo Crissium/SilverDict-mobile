@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { Appbar, TextInput, useTheme } from 'react-native-paper';
 import { TEXT_ZOOM_MAX, TEXT_ZOOM_MIN } from '../../config';
+import { useQueryContext } from './QueryContext';
 import { localisedStrings } from '../../translations/l10n';
 
 const TEXT_ZOOM_STEP = 10;
 
-export default function ArticleBottomBar(props) {
+export default function ArticleBottomBar() {
 	const onSurfaceColour = useTheme().colors.onSurface;
-	const { searchInLocalHistory, ableToGoBack, ableToGoForward, textZoom, setTextZoom, findInPageRef } = props;
+	const { ableToGoBackInHistory, ableToGoForwardInHistory, searchInLocalHistory, textZoom, setTextZoom, findInPageRef } = useQueryContext();
+
 	const [findBarActive, setFindBarActive] = useState(false);
 	const [wordToFind, setWordToFind] = useState('');
 
@@ -69,7 +71,7 @@ export default function ArticleBottomBar(props) {
 			<Appbar>
 				<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
 					{
-						ableToGoBack ?
+						ableToGoBackInHistory ?
 							<Appbar.Action
 								icon='arrow-left'
 								color={onSurfaceColour}
@@ -79,7 +81,7 @@ export default function ArticleBottomBar(props) {
 								color={onSurfaceColour} />
 					}
 					{
-						ableToGoForward ?
+						ableToGoForwardInHistory ?
 							<Appbar.Action
 								icon='arrow-right'
 								color={onSurfaceColour}

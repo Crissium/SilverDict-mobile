@@ -2,16 +2,20 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import { List, Modal, Portal, useTheme } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
+import { useAppContext } from '../../AppContext';
+import { useQueryContext } from './QueryContext';
 
 function DictionaryItem(props) {
-	const { name, displayName, setNameDictionaryToJumpTo, setVisible } = props;
+	const { name, displayName, setVisible, jumpToDictionaryRef } = props;
 
 	return (
 		<List.Item
 			title={displayName}
 			onPress={(e) => {
-				setNameDictionaryToJumpTo(name);
-				setVisible(false);
+				if (jumpToDictionaryRef.current) {
+					jumpToDictionaryRef.current(name);
+					setVisible(false);
+				}
 			}}
 		/>
 	);
@@ -19,7 +23,9 @@ function DictionaryItem(props) {
 
 export default function DictionarySelection(props) {
 	const theme = useTheme();
-	const { visible, setVisible, dictionaries, groups, groupings, nameActiveGroup, setNameActiveGroup, namesActiveDictionaries, setNameDictionaryToJumpTo } = props;
+	const { dictionaries, groups, groupings } = useAppContext();
+	const { nameActiveGroup, setNameActiveGroup, namesActiveDictionaries, jumpToDictionaryRef } = useQueryContext();
+	const { visible, setVisible } = props;
 
 	return (
 		<Portal>
@@ -63,8 +69,8 @@ export default function DictionarySelection(props) {
 								<DictionaryItem
 									name={item.name}
 									displayName={item.displayName}
-									setNameDictionaryToJumpTo={setNameDictionaryToJumpTo}
-									setVisible={setVisible} />}
+									setVisible={setVisible}
+									jumpToDictionaryRef={jumpToDictionaryRef} />}
 							keyExtractor={(item) => item.name}
 						/>
 					</>

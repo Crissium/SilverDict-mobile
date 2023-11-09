@@ -1,13 +1,15 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { View } from 'react-native';
 import AutoHeightWebView from 'react-native-autoheight-webview';
 import { Button, Dialog, Portal, Text, useTheme } from 'react-native-paper';
+import { ADDITIONAL_GOOGLE_FONTS, SEPARATOR } from '../../config';
 import { useAppContext } from '../../AppContext';
+import { useQueryContext } from './QueryContext';
 import { localisedStrings } from '../../translations/l10n';
-import { ADDITIONAL_GOOGLE_FONTS } from '../../config';
 
 function ConfirmSearchDialogue(props) {
-	const { visible, wordSelected, setWordSelected, setQuery, search } = props;
+	const { visible, wordSelected, setWordSelected } = props;
+	const { searchBranching, setQueryAndFocusOnInput } = useQueryContext();
 
 	return (
 		<Portal>
@@ -24,13 +26,13 @@ function ConfirmSearchDialogue(props) {
 						{localisedStrings['generic-no']}
 					</Button>
 					<Button onPress={() => {
-						setQuery(wordSelected);
+						setQueryAndFocusOnInput(wordSelected);
 						setWordSelected('');
 					}}>
 						{localisedStrings['generic-edit']}
 					</Button>
 					<Button onPress={() => {
-						search(wordSelected);
+						searchBranching(wordSelected);
 						setWordSelected('');
 					}}>
 						{localisedStrings['generic-yes']}
@@ -42,7 +44,6 @@ function ConfirmSearchDialogue(props) {
 }
 
 const clickListenersScript = `
-window.scrollTo(0, 0);
 let wordToFind = '';
 document.addEventListener('click', function (event) {
 	if (event.target.matches('a')) {
@@ -93,9 +94,10 @@ articleElement.addEventListener('click', function (event) {
 	window.ReactNativeWebView.postMessage(word);
 });`
 
-export default function ArticleView(props) {
-	const { serverAddress, article, textZoom, nameDictionaryToJumpTo, search, setQuery, findInPageRef } = props;
-	const { fontFamily, darkTextColour, scriptsWithAdditionalFonts } = useAppContext();
+export default function ArticleView() {
+	const { serverAddress, fontFamily, darkTextColour, scriptsWithAdditionalFonts } = useAppContext();
+	const { article, textZoom, findInPageRef, jumpToDictionaryRef, getPositionInPageRef, localHistoryRef, positionInLocalHistoryRef, searchBranching, setArticle, search, setPositionInLocalHistory, setNamesActiveDictionaries } = useQueryContext();
+
 	const webref = useRef(null);
 	const [wordSelected, setWordSelected] = useState('');
 
@@ -147,7 +149,8 @@ export default function ArticleView(props) {
 [style*="color: olive;"]          { color: #F0E68C !important; }
 [style*="color: darkolivegreen;"] { color: #ADFF2F !important; }
 [style*="color: olivedrab;"]      { color: #ADFF2F !important; }
-[style*="color: grey;"]           { color: #887C66 !important; }
+[style*="color: grey;"]           { color: #008080 !important; }
+[style*="color: teal;"]           { color: #008080 !important; }
 
 body {
 	color: ${darkTextColour} !important;
@@ -162,14 +165,6 @@ a {
 	color: #ffffff;
 }
 `
-
-	useEffect(function () {
-		if (nameDictionaryToJumpTo.length > 0) {
-			webref.current.injectJavaScript(`
-				document.getElementById('${nameDictionaryToJumpTo}').scrollIntoView();
-			`);
-		}
-	}, [nameDictionaryToJumpTo]);
 
 	return (
 		<View style={{ flex: 1 }}>
@@ -224,18 +219,60 @@ ${useTheme().dark ? darkTextColourStylesheet : ''}
 				onLoadEnd={() => {
 					webref.current.injectJavaScript(clickListenersScript);
 					webref.current.requestFocus();
+
+					let positionToScrollTo = 0;
+					try {
+						positionToScrollTo = localHistoryRef.current[positionInLocalHistoryRef.current].position;
+					} catch (error) {
+					}
+					webref.current.injectJavaScript(`
+						window.scrollTo(0, ${positionToScrollTo});
+					`);
+
 					findInPageRef.current = function (wordToFind, isBackwards) {
 						webref.current.injectJavaScript(`
 							wordToFind = '${wordToFind}';
 							window.find(wordToFind, false, ${isBackwards}, true, false, false);
 						`);
-					}
+					};
+					jumpToDictionaryRef.current = function (nameDictionaryToJumpTo) {
+						webref.current.injectJavaScript(`
+							document.getElementById('${nameDictionaryToJumpTo}').scrollIntoView();
+						`);
+					};
+					getPositionInPageRef.current = function (callbackType, argument) {
+						let message = '!POS!' + callbackType;
+						if (callbackType !== 1) {
+							message += SEPARATOR + argument + SEPARATOR;
+						}
+						webref.current.injectJavaScript(`
+							window.ReactNativeWebView.postMessage('${message}' + window.scrollY);
+						`);
+					};
 				}}
 				onMessage={(event) => {
 					const message = event.nativeEvent.data;
 					if (message.startsWith('!!S!!')) {
 						const query = message.substring(5);
-						search(query);
+						searchBranching(query);
+					} else if (message.startsWith('!POS!')) {
+						const callbackType = parseInt(message.substring(5, 6));
+						if (callbackType === 1) {
+							setArticle('');
+							localHistoryRef.current[positionInLocalHistoryRef.current].position = parseFloat(message.substring(6));
+						} else {
+							const [argument, position] = message.substring(7).split(SEPARATOR);
+							localHistoryRef.current[positionInLocalHistoryRef.current].position = parseFloat(position);
+							if (callbackType === 2) {
+								search(argument);
+							} else if (callbackType === 3) {
+								const direction = parseInt(argument);
+								const newPosition = positionInLocalHistoryRef.current + direction;
+								setPositionInLocalHistory(newPosition);
+								setArticle(localHistoryRef.current[newPosition].article);
+								setNamesActiveDictionaries(localHistoryRef.current[newPosition].dictionaries);
+							}
+						}
 					} else {
 						setWordSelected(message);
 					}
@@ -245,8 +282,6 @@ ${useTheme().dark ? darkTextColourStylesheet : ''}
 				visible={wordSelected.length > 0}
 				wordSelected={wordSelected}
 				setWordSelected={setWordSelected}
-				setQuery={setQuery}
-				search={search}
 			/>
 		</View>
 	);

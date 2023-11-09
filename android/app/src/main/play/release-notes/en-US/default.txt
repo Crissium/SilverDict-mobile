@@ -1,2 +1,2 @@
-Fix:
-Retain the old search term when a suggestion is selected. This is the behaviour of GoldenDict.
+New Feature:
+Caching the search results in memory.
