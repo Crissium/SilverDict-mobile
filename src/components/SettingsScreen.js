@@ -5,6 +5,7 @@ import ChangeAddressDialogue from './SettingsScreen/ChangeAddressDialogue';
 import ChangeFontDialogue from './SettingsScreen/ChangeFontDialogue';
 import AdditionalFontsDialogue from './SettingsScreen/AdditionalFontsDialogue';
 import ChangeColourDialogue from './SettingsScreen/ChangeColourDialogue';
+import DarkReaderConfigDialogue from './SettingsScreen/DarkReaderConfigDialogue';
 import ChangeSizeSuggestionDialogue from './SettingsScreen/ChangeSizeSuggestionDialogue';
 import ChangeSizeHistoryDialogue from './SettingsScreen/ChangeSizeHistoryDialogue';
 import ConfirmClearHistoryDialogue from './SettingsScreen/ConfirmClearHistoryDialogue';
@@ -19,13 +20,14 @@ export default function SettingsScreen({ navigation }) {
 	const [fontDialogueVisible, setFontDialogueVisible] = useState(false);
 	const [additionalFontsDialogueVisible, setAdditionalFontsDialogueVisible] = useState(false);
 	const [colourDialogueVisible, setColourDialogueVisible] = useState(false);
+	const [darkReaderConfigDialogueVisible, setDarkReaderConfigDialogueVisible] = useState(false);
 	const [sizeSuggestionDialogueVisible, setSizeSuggestionDialogueVisible] = useState(false);
 	const [sizeHistoryDialogueVisible, setSizeHistoryDialogueVisible] = useState(false);
 	const [clearHistoryDialogueVisible, setClearHistoryDialogueVisible] = useState(false);
 	const [recreateNgramDialogueVisible, setRecreateNgramDialogueVisible] = useState(false);
 
 	return (
-		<View style={{flex: 1}}>
+		<View style={{ flex: 1 }}>
 			<Appbar.Header>
 				<Appbar.Action icon='menu' onPress={() => navigation.openDrawer()} />
 				<Appbar.Content title={localisedStrings['drawer-settings-label']} />
@@ -58,6 +60,13 @@ export default function SettingsScreen({ navigation }) {
 						description: darkTextColour,
 						onPress: () => {
 							setColourDialogueVisible(true);
+						}
+					},
+					{
+						title: localisedStrings['dark-reader-config-title'],
+						description: '',
+						onPress: () => {
+							setDarkReaderConfigDialogueVisible(true);
 						}
 					},
 					{
@@ -115,6 +124,9 @@ export default function SettingsScreen({ navigation }) {
 				setVisible={setColourDialogueVisible}
 				darkTextColour={darkTextColour}
 				setDarkTextColour={setDarkTextColour} />
+			<DarkReaderConfigDialogue
+				visible={darkReaderConfigDialogueVisible}
+				setVisible={setDarkReaderConfigDialogueVisible} />
 			<ChangeSizeSuggestionDialogue
 				visible={sizeSuggestionDialogueVisible}
 				setVisible={setSizeSuggestionDialogueVisible}

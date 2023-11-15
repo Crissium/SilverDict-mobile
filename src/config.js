@@ -65,3 +65,7 @@ export const DEFAULT_ADDITIONAL_GOOGLE_FONTS_ENABLED_STATUS =
 		return status;
 	}, {});
 export const SEPARATOR = '\x10'; // ASCII Data Link Escape, chosen because it is unlikely to appear in dictionary headwords
+export const DEFAULT_DARK_READER_ENABLED = false;
+export const DEFAULT_DARK_READER_BRIGHTNESS = 70;
+export const DEFAULT_DARK_READER_CONTRAST = 100;
+export const DEFAULT_DARK_READER_SEPIA = 10;

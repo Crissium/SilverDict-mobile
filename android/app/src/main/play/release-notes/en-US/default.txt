@@ -1,2 +1,2 @@
 New Feature:
-Caching the search results in memory.
+Integrating the Dark Reader extension.

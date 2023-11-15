@@ -94,10 +94,13 @@ articleElement.addEventListener('click', function (event) {
 	window.ReactNativeWebView.postMessage(word);
 });`
 
+const darkReaderScript = require('./darkreader');
+
 export default function ArticleView() {
-	const { serverAddress, fontFamily, darkTextColour, scriptsWithAdditionalFonts } = useAppContext();
+	const { serverAddress, fontFamily, darkTextColour, scriptsWithAdditionalFonts, darkReaderEnabled, darkReaderBrightness, darkReaderContrast, darkReaderSepia } = useAppContext();
 	const { article, textZoom, findInPageRef, jumpToDictionaryRef, getPositionInPageRef, localHistoryRef, positionInLocalHistoryRef, searchBranching, setArticle, search, setPositionInLocalHistory, setNamesActiveDictionaries } = useQueryContext();
 
+	const isDarkMode = useTheme().dark;
 	const webref = useRef(null);
 	const [wordSelected, setWordSelected] = useState('');
 
@@ -108,6 +111,47 @@ export default function ArticleView() {
 		.filter(([script, fontName]) => namesScripts.includes(script))
 		.map((ar) => ar[1]);
 	namesAdditionalFonts = [...new Set(namesAdditionalFonts)];
+
+	const darkTextColourStylesheet = `
+		/* lighten dark colors */
+		[style*="color: blue;"]           { color: #8882FF !important; }
+		[style*="color: mediumblue;"]     { color: #8882FF !important; }
+		[style*="color: darkblue;"]       { color: #8882FF !important; }
+		[style*="color: darkslateblue;"]  { color: #8882FF !important; }
+		[style*="color: midnightblue;"]   { color: #8882FF !important; }
+		[style*="color: navy;"]           { color: #8882FF !important; }
+		[style*="color: darkmagenta;"]    { color: #FF22FF !important; }
+		[style*="color: purple;"]         { color: #FF22FF !important; }
+		[style*="color: indigo;"]         { color: #B959FF !important; }
+		[style*="color: darkred;"]        { color: #D20000 !important; }
+		[style*="color: maroon;"]         { color: #D20000 !important; }
+		[style*="color: darkslategray;"]  { color: #768390 !important; }
+		[style*="color: dimgray;"]        { color: #A7A7A7 !important; }
+		[style*="color: green;"]          { color: #32CD32 !important; }
+		[style*="color: darkgreen;"]      { color: #32CD32 !important; }
+		[style*="color: forestgreen;"]    { color: #32CD32 !important; }
+		[style*="color: seagreen;"]       { color: #00FF7F !important; }
+		[style*="color: mediumseagreen;"] { color: #00FF7F !important; }
+		[style*="color: olive;"]          { color: #F0E68C !important; }
+		[style*="color: darkolivegreen;"] { color: #ADFF2F !important; }
+		[style*="color: olivedrab;"]      { color: #ADFF2F !important; }
+		[style*="color: grey;"]           { color: #008080 !important; }
+		[style*="color: teal;"]           { color: #008080 !important; }
+
+		body {
+			color: ${darkTextColour} !important;
+		}
+
+		a {
+			color: #379bff;
+		}
+
+		::selection {
+			background: #0080ff;
+			color: #ffffff;
+		}
+`
+
 	const articleHtml = `
 <!DOCTYPE html>
 <html>
@@ -117,6 +161,47 @@ export default function ArticleView() {
 	<link
 		rel="stylesheet"
 		href="https://fonts.googleapis.com/css?family=${namesAdditionalFonts.map((name) => name.replaceAll(' ', '+')).join('|')}">` : ''}
+	<style>
+		* {
+			font-family: ${namesAdditionalFonts.map((name) => `'${name}'`).join(', ')}${namesAdditionalFonts.length > 0 ? ', ' : ''} ${fontFamily};
+		}
+
+		.article-block {
+			border-top: 1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		img {
+			max-width: 100%;
+		}
+
+		hr {
+			border: none;
+			border-top: 0.5px solid #ccc;
+			width: 98%;
+		}
+
+		.dictionary-headings {
+			padding-top: 5px;
+			padding-bottom: 5px;
+			color: ${isDarkMode && darkReaderEnabled ? 'lightgreen' : 'darkgreen'};
+			font-weight: bolder;
+		}
+
+		audio {
+			all: unset;
+			width: 100px;
+			height: 0.8rem;
+		}
+
+		audio::-webkit-media-controls-timeline {
+			display: none;
+		}
+
+		${isDarkMode && !darkReaderEnabled ? darkTextColourStylesheet : ''}
+	</style>
 </head>
 <body>
 	<div class="article-container">
@@ -126,46 +211,6 @@ export default function ArticleView() {
 </html>
 `
 
-	const darkTextColourStylesheet = `
-/* lighten dark colors */
-[style*="color: blue;"]           { color: #8882FF !important; }
-[style*="color: mediumblue;"]     { color: #8882FF !important; }
-[style*="color: darkblue;"]       { color: #8882FF !important; }
-[style*="color: darkslateblue;"]  { color: #8882FF !important; }
-[style*="color: midnightblue;"]   { color: #8882FF !important; }
-[style*="color: navy;"]           { color: #8882FF !important; }
-[style*="color: darkmagenta;"]    { color: #FF22FF !important; }
-[style*="color: purple;"]         { color: #FF22FF !important; }
-[style*="color: indigo;"]         { color: #B959FF !important; }
-[style*="color: darkred;"]        { color: #D20000 !important; }
-[style*="color: maroon;"]         { color: #D20000 !important; }
-[style*="color: darkslategray;"]  { color: #768390 !important; }
-[style*="color: dimgray;"]        { color: #A7A7A7 !important; }
-[style*="color: green;"]          { color: #32CD32 !important; }
-[style*="color: darkgreen;"]      { color: #32CD32 !important; }
-[style*="color: forestgreen;"]    { color: #32CD32 !important; }
-[style*="color: seagreen;"]       { color: #00FF7F !important; }
-[style*="color: mediumseagreen;"] { color: #00FF7F !important; }
-[style*="color: olive;"]          { color: #F0E68C !important; }
-[style*="color: darkolivegreen;"] { color: #ADFF2F !important; }
-[style*="color: olivedrab;"]      { color: #ADFF2F !important; }
-[style*="color: grey;"]           { color: #008080 !important; }
-[style*="color: teal;"]           { color: #008080 !important; }
-
-body {
-	color: ${darkTextColour} !important;
-}
-
-a {
-	color: #379bff;
-}
-
-::selection {
-	background: #0080ff;
-	color: #ffffff;
-}
-`
-
 	return (
 		<View style={{ flex: 1 }}>
 			<AutoHeightWebView
@@ -173,53 +218,10 @@ a {
 				style={{ flex: 1 }}
 				containerStyle={{ flex: 1 }}
 				viewportContent={'width=device-width, user-scalable=no'}
-				customStyle={`
-* {
-	font-family: ${namesAdditionalFonts.map((name) => `'${name}'`).join(', ')}${namesAdditionalFonts.length > 0 ? ', ' : ''} ${fontFamily};
-}
-
-.article-block {
-	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-img {
-	max-width: 100%;
-}
-
-hr {
-	border: none;
-	border-top: 0.5px solid #ccc;
-	width: 98%;
-}
-
-.dictionary-headings {
-	padding-top: 5px;
-	padding-bottom: 5px;
-	color: darkgreen;
-	font-weight: bolder;
-}
-
-audio {
-	all: unset;
-	width: 100px;
-	height: 0.8rem;
-}
-
-audio::-webkit-media-controls-timeline {
-	display: none;
-}
-
-${useTheme().dark ? darkTextColourStylesheet : ''}
-    		`}
 				source={{ html: articleHtml, baseUrl: serverAddress }}
 				ref={webref}
+				injectedJavaScriptBeforeContentLoaded={isDarkMode && darkReaderEnabled ? darkReaderScript : ''}
 				onLoadEnd={() => {
-					webref.current.injectJavaScript(clickListenersScript);
-					webref.current.requestFocus();
-
 					let positionToScrollTo = 0;
 					try {
 						positionToScrollTo = localHistoryRef.current[positionInLocalHistoryRef.current].position;
@@ -228,6 +230,18 @@ ${useTheme().dark ? darkTextColourStylesheet : ''}
 					webref.current.injectJavaScript(`
 						window.scrollTo(0, ${positionToScrollTo});
 					`);
+
+					if (isDarkMode && darkReaderEnabled) {
+						webref.current.injectJavaScript(`
+							DarkReader.enable({
+								brightness: ${darkReaderBrightness},
+								contrast: ${darkReaderContrast},
+								sepia: ${darkReaderSepia}
+							});
+						`);
+					}
+					webref.current.injectJavaScript(clickListenersScript);
+					webref.current.requestFocus();
 
 					findInPageRef.current = function (wordToFind, isBackwards) {
 						webref.current.injectJavaScript(`

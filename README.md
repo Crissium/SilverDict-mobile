@@ -3,8 +3,8 @@
 [![Crowdin](https://badges.crowdin.net/silverdict-mobile/localized.svg)](https://crowdin.com/project/silverdict-mobile)
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-    alt="Get it on F-Droid"
-    height="80">](https://f-droid.org/packages/com.gmail.blandilyte.silverdict)
+	alt="Get it on F-Droid"
+	height="80">](https://f-droid.org/packages/com.gmail.blandilyte.silverdict)
 
 [Guide](https://github.com/Crissium/SilverDict/wiki/android)
 
@@ -27,6 +27,7 @@ I cannot develop the iOS version because I don't have a Mac or a 99 USD/year App
 ## Issues
 
 - [ ] Dynamic screen width in WebView (if you rotate from portrait to landscape, the WebView will not be resized)
+- [ ] The WebView takes too long to load (1 - 300 ms). When the entire Dark Reader library is loaded, the minimum could be as long as 100 ms.
 
 # Development
 
@@ -44,3 +45,7 @@ yarn install
 yarn start
 yarn android
 ```
+
+## Note
+
+The [Dark Reader extension](/src/components/QueryScreen/darkreader.js) is taken from the NPM package, uglified and turned into a string to make it injectable into the WebView.
