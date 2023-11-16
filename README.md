@@ -1,6 +1,6 @@
 # Description
 
-[![Crowdin](https://badges.crowdin.net/silverdict-mobile/localized.svg)](https://crowdin.com/project/silverdict-mobile)
+[![Crowdin](https://badges.crowdin.net/silverdict-mobile/localized.svg)](https://crowdin.com/project/silverdict-mobile) (My Crowdin project has been suspended and I have to wait for three months to get an open source free licence. If you would like to contribute to localisation, please directly edit the JSON files in `/src/translations` and submit a PR.)
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
 	alt="Get it on F-Droid"
