@@ -1,2 +1,2 @@
-New Feature:
-Integrating the Dark Reader extension.
+Fix:
+Use adaptive icon.
