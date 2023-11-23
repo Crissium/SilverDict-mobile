@@ -13,7 +13,10 @@ function DictionaryItem(props) {
 			title={displayName}
 			onPress={(e) => {
 				if (jumpToDictionaryRef.current) {
-					jumpToDictionaryRef.current(name);
+					try {
+						jumpToDictionaryRef.current(name);
+					} catch (error) {
+					}
 					setVisible(false);
 				}
 			}}
