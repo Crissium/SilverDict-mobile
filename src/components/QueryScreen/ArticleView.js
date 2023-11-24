@@ -45,6 +45,7 @@ function ConfirmSearchDialogue(props) {
 
 const clickListenersScript = `
 let wordToFind = '';
+let savedArticle = '';
 document.addEventListener('click', function (event) {
 	if (event.target.matches('a')) {
 		const href = event.target.getAttribute('href');
@@ -52,6 +53,18 @@ document.addEventListener('click', function (event) {
 		if (href && href.startsWith('/api/query')) {
 			const query = href.split('/').pop().split('#')[0];
 			window.ReactNativeWebView.postMessage('!!S!!' + query);
+		} else if (href && href.startsWith('/api/cache')) {
+			// window.open(href);
+			savedArticle = document.body.innerHTML;
+			const image_html = '<img src="' + href + '" style="width: 100%;" /><br /><a href="!!BACK!!">Go back</a>';
+			document.body.innerHTML = image_html;
+		} else if (href && href === '!!BACK!!') {
+			document.body.innerHTML = savedArticle;
+		} else if (href && href.startsWith('#')) {
+			const element = document.getElementById(href.substring(1));
+			if (element) {
+				element.scrollIntoView();
+			}
 		}
 	}
 });
