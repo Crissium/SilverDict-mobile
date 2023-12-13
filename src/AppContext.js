@@ -180,7 +180,8 @@ export function AppProvider({ children }) {
 				setSizeHistory,
 				formats,
 				sources,
-				setSources
+				setSources,
+				fetchInitialData
 			}}
 		>
 			{children}

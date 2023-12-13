@@ -50,6 +50,7 @@
 	"dictionary-manager-dialogue-name-placeholder": "新词典名称",
 	"drawer-library-label": "库",
 	"drawer-query-label": "查询",
+	"drawer-reconnect-label": "重新连接",
 	"drawer-settings-label": "设置",
 	"generic-alert-invalid-number": "无效数字。",
 	"generic-cancel": "取消",
