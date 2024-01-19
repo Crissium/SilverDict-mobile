@@ -50,6 +50,7 @@
 	"dictionary-manager-dialogue-name-placeholder": "new dictionary name",
 	"drawer-library-label": "Bibliothèque",
 	"drawer-query-label": "Query",
+	"drawer-reconnect-label": "Reconnect",
 	"drawer-settings-label": "Paramètres",
 	"generic-alert-invalid-number": "Numéro invalide.",
 	"generic-cancel": "Annuler",
