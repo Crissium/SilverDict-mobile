@@ -50,6 +50,7 @@
 	"dictionary-manager-dialogue-name-placeholder": "new dictionary name",
 	"drawer-library-label": "Library",
 	"drawer-query-label": "查詢",
+	"drawer-reconnect-label": "Reconnect",
 	"drawer-settings-label": "設定",
 	"generic-alert-invalid-number": "\"無效數字。",
 	"generic-cancel": "取消",
