@@ -16,7 +16,7 @@
 	"article-view-tap-to-search-dialogue-message": "Search for “{0}”?",
 	"change-address-dialogue-message-unable-to-connect": "Unable to connect to server.",
 	"change-address-dialogue-title": "Change server address",
-	"change-colour-dialogue-content": "A value such as ‘white’ or ‘grey’ is recommended.\nThis setting only takes effect when the Dark Reader extension is disabled.",
+	"change-colour-dialogue-content": "A value such as “white” or “gray” is recommended.\nThis setting only takes effect when the Dark Reader extension is disabled.",
 	"change-colour-dialogue-title": "Change the color of the text in the dark mode",
 	"change-font-dialogue-font-sans-serif": "sans-serif",
 	"change-font-dialogue-font-serif": "serif",
