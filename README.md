@@ -1,6 +1,8 @@
 # Description
 
-[![Crowdin](https://badges.crowdin.net/silverdict-mobile/localized.svg)](https://crowdin.com/project/silverdict-mobile) (My Crowdin project has been suspended and I have to wait for three months to get an open source free licence. If you would like to contribute to localisation, please directly edit the JSON files in `/src/translations` and submit a PR.)
+[![Crowdin](https://badges.crowdin.net/silverdict-mobile/localized.svg)](https://crowdin.com/project/silverdict-mobile)
+
+I have to have an 'active community of collaborators' to request an open source licence from Crowdin, which I need to add the main project to the platform. So please help me translate the mobile project to show them that there is a community.
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
 	alt="Get it on F-Droid"
