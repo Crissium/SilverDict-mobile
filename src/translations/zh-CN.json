@@ -16,7 +16,7 @@
 	"article-view-tap-to-search-dialogue-message": "搜索 “{0}”?",
 	"change-address-dialogue-message-unable-to-connect": "无法连接到服务器。",
 	"change-address-dialogue-title": "变更服务器地址",
-	"change-colour-dialogue-content": "建议采用 white/grey 这样的值。\n该设置仅在 Dark Reader 扩展被禁用时生效。",
+	"change-colour-dialogue-content": "推荐填写“white”（白色）或“grey”（灰色）。\n该设置仅在 Dark Reader 扩展被禁用时生效。",
 	"change-colour-dialogue-title": "变更暗色模式下字体颜色",
 	"change-font-dialogue-font-sans-serif": "无衬线字体（黑体）",
 	"change-font-dialogue-font-serif": "衬线字体（宋体）",
