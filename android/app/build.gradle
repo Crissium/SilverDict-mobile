@@ -78,8 +78,8 @@ android {
 		applicationId "com.gmail.blandilyte.silverdict"
 		minSdkVersion rootProject.ext.minSdkVersion
 		targetSdkVersion rootProject.ext.targetSdkVersion
-		versionCode 2
-		versionName "1.0.3"
+		versionCode 10
+		versionName "1.3.0"
 	}
 	signingConfigs {
 		debug {
@@ -113,7 +113,7 @@ android {
 			reset()
 			enable true
 			include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
-			universalApk true
+			universalApk false
 		}
 	}
 
@@ -124,7 +124,7 @@ android {
 		variant.outputs.each { output ->
 			output.versionCodeOverride =
 				project.ext.versionCodes.get(output.getFilter(
-					com.android.build.OutputFile.ABI), 0) * 10000000 + android.defaultConfig.versionCode
+					com.android.build.OutputFile.ABI), 0) + android.defaultConfig.versionCode * 10
 		}
 	}
 }

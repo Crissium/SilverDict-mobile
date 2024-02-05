@@ -1,15 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import React from 'react';
+import { FlatList, Keyboard, View } from 'react-native';
 import { List } from 'react-native-paper';
-import { Keyboard } from 'react-native';
 import ArticleView from './ArticleView';
 import ArticleBottomBar from './ArticleBottomBar';
-import { loadPersistentData, storePersistentData, isRTL } from '../../utils';
-import { DEFAULT_TEXT_ZOOM } from '../../config';
+import { useAppContext } from '../../AppContext';
+import { useQueryContext } from './QueryContext';
+import { isRTL } from '../../utils';
 
 function WordItem(props) {
-	const { word, search } = props;
+	const { word } = props;
 	const wordIsRTL = isRTL(word);
+	const { search } = useQueryContext();
 
 	return (
 		<List.Item
@@ -19,24 +20,10 @@ function WordItem(props) {
 	);
 }
 
-export default function QueryContent(props) {
-	const { serverAddress, queryIsEmpty, history, suggestions, search, article, nameDictionaryToJumpTo, setQuery, searchInLocalHistory, ableToGoBack, ableToGoForward } = props;
-	const wordsToDisplay = queryIsEmpty ? history : suggestions;
-	const findInPageRef = useRef(null);
-	const [textZoom, setTextZoom] = useState('');
-
-	async function loadStoredTextZoom() {
-		const storedTextZoom = await loadPersistentData('textZoom', DEFAULT_TEXT_ZOOM);
-		setTextZoom(parseInt(storedTextZoom));
-	}
-
-	async function storeTextZoom() {
-		await storePersistentData('textZoom', textZoom.toString());
-	}
-
-	useEffect(function () { loadStoredTextZoom(); }, []);
-
-	useEffect(function () { storeTextZoom(); }, [textZoom]);
+export default function QueryContent() {
+	const { history } = useAppContext();
+	const { query, article, suggestions } = useQueryContext();
+	const wordsToDisplay = query.length === 0 ? history : suggestions;
 
 	if (article.length === 0)
 		return (
@@ -44,29 +31,18 @@ export default function QueryContent(props) {
 				<FlatList
 					keyboardShouldPersistTaps='handled'
 					data={wordsToDisplay}
-					renderItem={({ item }) => <WordItem word={item} search={search} />}
+					renderItem={({ item }) => <WordItem word={item} />}
 					keyExtractor={(item) => item}
 				/>
 			</View>
 		);
 	else
 		return (
-			<View style={{ flex: 1 }}>
-				<ArticleView
-					serverAddress={serverAddress}
-					article={article}
-					textZoom={textZoom}
-					nameDictionaryToJumpTo={nameDictionaryToJumpTo}
-					search={search}
-					setQuery={setQuery}
-					findInPageRef={findInPageRef} />
-				<ArticleBottomBar
-					searchInLocalHistory={searchInLocalHistory}
-					ableToGoBack={ableToGoBack}
-					ableToGoForward={ableToGoForward}
-					textZoom={textZoom}
-					setTextZoom={setTextZoom}
-					findInPageRef={findInPageRef} />
+			<View
+				style={{ flex: 1 }}
+			>
+				<ArticleView />
+				<ArticleBottomBar />
 			</View>
 		);
 }

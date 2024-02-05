@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react';
 import { TextInput, useTheme } from 'react-native-paper';
 import { isRTL } from '../../utils';
+import { useQueryContext } from './QueryContext';
 import { localisedStrings } from '../../translations/l10n';
 
-export default function Input(props) {
-	const { query, setQuery, textInputRef, handleInputSubmit, setArticle } = props;
-
-	function handleQueryChange(newQuery) {
-		setQuery(newQuery);
-	}
+export default function Input() {
+	const { query, setQuery, textInputRef, handleInputSubmit, clearArticle } = useQueryContext();
 
 	function handleInputFocus(e) {
-		setArticle('');
+		clearArticle();
 	}
 
 	useEffect(function () {
@@ -32,7 +29,7 @@ export default function Input(props) {
 			activeUnderlineColor='transparent'
 			placeholder={localisedStrings['placeholder-search']}
 			value={query}
-			onChangeText={handleQueryChange}
+			onChangeText={setQuery}
 			onFocus={handleInputFocus}
 			selectTextOnFocus={true}
 			autoFocus={true}

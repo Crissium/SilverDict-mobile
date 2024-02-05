@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { loadPersistentData, storePersistentData } from './utils';
-import { DEFAULT_SERVER_ADDRESS, DEFAULT_FONT_FAMILY, DEFAULT_DARK_TEXT_COLOUR, DEFAULT_ADDITIONAL_GOOGLE_FONTS_ENABLED_STATUS } from './config';
+import { DEFAULT_SERVER_ADDRESS, DEFAULT_FONT_FAMILY, DEFAULT_DARK_TEXT_COLOUR, DEFAULT_ADDITIONAL_GOOGLE_FONTS_ENABLED_STATUS, DEFAULT_DARK_READER_ENABLED, DEFAULT_DARK_READER_BRIGHTNESS, DEFAULT_DARK_READER_CONTRAST, DEFAULT_DARK_READER_SEPIA } from './config';
 import { loadDataFromJsonResponse, convertDictionarySnakeCaseToCamelCase } from './utils';
 import { localisedStrings } from './translations/l10n';
 
@@ -19,6 +19,11 @@ export function AppProvider({ children }) {
 	const [darkTextColour, setDarkTextColour] = useState('');
 	const [scriptsWithAdditionalFonts, setScriptsWithAdditionalFonts] = useState({});
 
+	const [darkReaderEnabled, setDarkReaderEnabled] = useState('');
+	const [darkReaderBrightness, setDarkReaderBrightness] = useState('');
+	const [darkReaderContrast, setDarkReaderContrast] = useState('');
+	const [darkReaderSepia, setDarkReaderSepia] = useState('');
+
 	const [sizeSuggestion, setSizeSuggestion] = useState(10);
 	const [sizeHistory, setSizeHistory] = useState(100);
 
@@ -34,6 +39,14 @@ export function AppProvider({ children }) {
 		setDarkTextColour(storedDarkTextColour);
 		const storedScriptsWithAdditionalFonts = await loadPersistentData('scriptsWithAdditionalFonts', JSON.stringify(DEFAULT_ADDITIONAL_GOOGLE_FONTS_ENABLED_STATUS));
 		setScriptsWithAdditionalFonts(JSON.parse(storedScriptsWithAdditionalFonts));
+		const storedDarkReaderEnabled = await loadPersistentData('darkReaderEnabled', JSON.stringify(DEFAULT_DARK_READER_ENABLED));
+		setDarkReaderEnabled(JSON.parse(storedDarkReaderEnabled));
+		const storedDarkReaderBrightness = await loadPersistentData('darkReaderBrightness', DEFAULT_DARK_READER_BRIGHTNESS);
+		setDarkReaderBrightness(parseInt(storedDarkReaderBrightness));
+		const storedDarkReaderContrast = await loadPersistentData('darkReaderContrast', DEFAULT_DARK_READER_CONTRAST);
+		setDarkReaderContrast(parseInt(storedDarkReaderContrast));
+		const storedDarkReaderSepia = await loadPersistentData('darkReaderSepia', DEFAULT_DARK_READER_SEPIA);
+		setDarkReaderSepia(parseInt(storedDarkReaderSepia));
 	}
 
 	async function storeServerAddress() {
@@ -52,15 +65,31 @@ export function AppProvider({ children }) {
 		await storePersistentData('scriptsWithAdditionalFonts', JSON.stringify(scriptsWithAdditionalFonts));
 	}
 
+	async function storeDarkReaderEnabled() {
+		await storePersistentData('darkReaderEnabled', JSON.stringify(darkReaderEnabled));
+	}
+
+	async function storeDarkReaderBrightness() {
+		await storePersistentData('darkReaderBrightness', darkReaderBrightness.toString());
+	}
+
+	async function storeDarkReaderContrast() {
+		await storePersistentData('darkReaderContrast', darkReaderContrast.toString());
+	}
+
+	async function storeDarkReaderSepia() {
+		await storePersistentData('darkReaderSepia', darkReaderSepia.toString());
+	}
+
 	useEffect(function () { loadStoredData(); }, []);
-
 	useEffect(function () { storeServerAddress(); }, [serverAddress]);
-
 	useEffect(function () { storeFontFamily(); }, [fontFamily]);
-
 	useEffect(function () { storeDarkTextColour(); }, [darkTextColour]);
-
 	useEffect(function () { storeScriptsWithAdditionalFonts(); }, [scriptsWithAdditionalFonts]);
+	useEffect(function () { storeDarkReaderEnabled(); }, [darkReaderEnabled]);
+	useEffect(function () { storeDarkReaderBrightness(); }, [darkReaderBrightness]);
+	useEffect(function () { storeDarkReaderContrast(); }, [darkReaderContrast]);
+	useEffect(function () { storeDarkReaderSepia(); }, [darkReaderSepia]);
 
 	async function fetchInitialData(
 		apiPrefix,
@@ -137,13 +166,22 @@ export function AppProvider({ children }) {
 				setDarkTextColour,
 				scriptsWithAdditionalFonts,
 				setScriptsWithAdditionalFonts,
+				darkReaderEnabled,
+				setDarkReaderEnabled,
+				darkReaderBrightness,
+				setDarkReaderBrightness,
+				darkReaderContrast,
+				setDarkReaderContrast,
+				darkReaderSepia,
+				setDarkReaderSepia,
 				sizeSuggestion,
 				setSizeSuggestion,
 				sizeHistory,
 				setSizeHistory,
 				formats,
 				sources,
-				setSources
+				setSources,
+				fetchInitialData
 			}}
 		>
 			{children}
