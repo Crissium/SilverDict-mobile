@@ -1,2 +1,1 @@
-New Translation: Russian (partially done)
-Further contribution is welcome!
+Russian translation is now complete!
