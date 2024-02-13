@@ -2,8 +2,6 @@
 
 [![Crowdin](https://badges.crowdin.net/silverdict-mobile/localized.svg)](https://crowdin.com/project/silverdict-mobile)
 
-I have to have an 'active community of collaborators' to request an open source licence from Crowdin, which I need to add the main project to the platform. So please help me translate the mobile project to show them that there is a community.
-
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
 	alt="Get it on F-Droid"
 	height="80">](https://f-droid.org/packages/com.gmail.blandilyte.silverdict)
@@ -51,3 +49,5 @@ yarn android
 ## Note
 
 The [Dark Reader extension](/src/components/QueryScreen/darkreader.js) is taken from the NPM package, uglified and turned into a string to make it injectable into the WebView.
+
+There has been a huge update to the web UI recently, which might supersede this project completely, since it doesn't have any Android system integration yet…
