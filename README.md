@@ -14,6 +14,8 @@ I cannot develop the iOS version because I don't have a Mac or a 99 USD/year App
 
 # Roadmap
 
+Perhaps before I do anything else, I should switch to Kotlin (which would make so many things easier) since I won't develop for iOS.
+
 - [x] Basic UI (Search, History/Suggestion, Settings, etc.)
 - [x] Go back/forwards in local history
 - [x] Zoom in/out and remember the zoom level
