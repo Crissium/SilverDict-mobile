@@ -58,7 +58,7 @@ export default function DictionarySelection(props) {
 								return {
 									label: group.name,
 									value: group.name
-								}
+								};
 							})}
 							onValueChange={(value) => {
 								setNameActiveGroup(value);
@@ -80,5 +80,5 @@ export default function DictionarySelection(props) {
 				)}
 			</Modal>
 		</Portal>
-	)
+	);
 }

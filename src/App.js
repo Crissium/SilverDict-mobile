@@ -49,5 +49,5 @@ export default function App() {
 				</Drawer.Navigator>
 			</NavigationContainer>
 		</AppProvider>
-	)
+	);
 }

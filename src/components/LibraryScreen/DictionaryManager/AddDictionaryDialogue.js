@@ -113,7 +113,7 @@ export default function AddDictionaryDialogue(props) {
 							return {
 								label: format,
 								value: format
-							}
+							};
 						})}
 						onValueChange={(value) => setNewDictionaryFormat(value)}
 						value={newDictionaryFormat}
@@ -138,7 +138,7 @@ export default function AddDictionaryDialogue(props) {
 							return {
 								label: group.name,
 								value: group.name
-							}
+							};
 						})}
 						onValueChange={(value) => setNewDictionaryGroup(value)}
 						value={newDictionaryGroup}

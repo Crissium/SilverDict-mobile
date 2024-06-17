@@ -105,7 +105,7 @@ articleElement.addEventListener('click', function (event) {
 
 	const word = range.toString();
 	window.ReactNativeWebView.postMessage(word);
-});`
+});`;
 
 const darkReaderScript = require('./darkreader');
 
@@ -163,7 +163,7 @@ export default function ArticleView() {
 			background: #0080ff;
 			color: #ffffff;
 		}
-`
+`;
 
 	const articleHtml = `
 <!DOCTYPE html>
@@ -222,7 +222,7 @@ export default function ArticleView() {
 	</div>
 </body>
 </html>
-`
+`;
 
 	return (
 		<View style={{ flex: 1 }}>

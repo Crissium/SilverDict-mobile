@@ -17,7 +17,7 @@ export default function QueryBar(props) {
 			<Input />
 			<Appbar.Action
 				icon='bookshelf'
-				onPress={() => { Keyboard.dismiss(); setDictionarySelectionVisible(true) }} />
+				onPress={() => { Keyboard.dismiss(); setDictionarySelectionVisible(true); }} />
 			<DictionarySelection
 				visible={dictionarySelectionVisible}
 				setVisible={setDictionarySelectionVisible}
