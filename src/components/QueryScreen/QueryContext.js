@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { DeviceEventEmitter } from 'react-native';
 import { useAppContext } from '../../AppContext';
 import { DEFAULT_TEXT_ZOOM } from '../../config';
 import { loadDataFromJsonResponse, loadPersistentData, storePersistentData } from '../../utils';
@@ -43,6 +44,19 @@ export function QueryProvider({ children }) {
 	useEffect(function () {
 		setNameActiveGroup('Default Group');
 	}, [groups.length]);
+
+	useEffect(function() {
+		DeviceEventEmitter.addListener('onTextSelected', function(e) {
+			const selectedText = e.selectedText;
+			if (selectedText.length > 0) {
+				setQueryAndFocusOnInput(selectedText);
+			}
+		});
+
+		return function() {
+			DeviceEventEmitter.removeAllListeners('onTextSelected');
+		}
+	}, []);
 
 	useEffect(function () {
 		if (query.length === 0) {

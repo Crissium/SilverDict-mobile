@@ -1,1 +1,1 @@
-Russian translation is now complete!
+Allow launching from the text selection menu in other apps.

@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
 /**
@@ -70,16 +71,16 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 
 android {
 	ndkVersion rootProject.ext.ndkVersion
-
-	compileSdkVersion rootProject.ext.compileSdkVersion
+	buildToolsVersion rootProject.ext.buildToolsVersion
+	compileSdk rootProject.ext.compileSdkVersion
 
 	namespace "com.gmail.blandilyte.silverdict"
 	defaultConfig {
 		applicationId "com.gmail.blandilyte.silverdict"
 		minSdkVersion rootProject.ext.minSdkVersion
 		targetSdkVersion rootProject.ext.targetSdkVersion
-		versionCode 12
-		versionName "1.4.1"
+		versionCode 13
+		versionName "1.5.0"
 	}
 	signingConfigs {
 		debug {
@@ -103,11 +104,12 @@ android {
 		release {
 			// Caution! In production, you need to generate your own keystore file.
 			// see https://reactnative.dev/docs/signed-apk-android.
-			signingConfig signingConfigs.release
+			signingConfig signingConfigs.debug
 			minifyEnabled enableProguardInReleaseBuilds
 			proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
 		}
 	}
+
 	splits {
 		abi {
 			reset()
@@ -118,7 +120,6 @@ android {
 	}
 
 	project.ext.versionCodes = ["armeabi-v7a":1, "x86":2, "arm64-v8a":3, "x86_64":4]
-
 
 	android.applicationVariants.all { variant ->
 		variant.outputs.each { output ->
@@ -133,12 +134,6 @@ dependencies {
 	// The version of react-native is set by the React Native Gradle Plugin
 	implementation("com.facebook.react:react-android")
 
-	debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
-	debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
-		exclude group:'com.squareup.okhttp3', module:'okhttp'
-	}
-
-	debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}")
 	if (hermesEnabled.toBoolean()) {
 		implementation("com.facebook.react:hermes-android")
 	} else {

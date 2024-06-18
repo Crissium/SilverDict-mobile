@@ -1,8 +1,4 @@
-<manifest
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.gmail.blandilyte.silverdict"
-	android:versionCode="10"
-	android:versionName="1.4.1">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<uses-permission android:name="android.permission.INTERNET" />
 
@@ -23,6 +19,11 @@
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.PROCESS_TEXT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="text/plain" />
 			</intent-filter>
 		</activity>
 	</application>

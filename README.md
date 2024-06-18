@@ -14,7 +14,9 @@ I cannot develop the iOS version because I don't have a Mac or a 99 USD/year App
 
 # Roadmap
 
-Perhaps before I do anything else, I should switch to Kotlin (which would make so many things easier) since I won't develop for iOS.
+~~Perhaps before I do anything else, I should switch to Kotlin (which would make so many things easier) since I won't develop for iOS.~~
+
+Kotlin's all Greek to me, so I'll stick with JavaScript for now.
 
 - [x] Basic UI (Search, History/Suggestion, Settings, etc.)
 - [x] Go back/forwards in local history
@@ -24,7 +26,7 @@ Perhaps before I do anything else, I should switch to Kotlin (which would make s
 - [x] Dictionary/Group management
 - [ ] Two-column view on wider screens
 - [x] Localisation
-- [ ] Launch SilverDict from context menu (that is, when you select a word in another app, you can choose to search for it in SilverDict. Also this would make it integrate better with e-book readers.)
+- [x] Launch SilverDict from context menu (that is, when you select a word in another app, you can choose to search for it in SilverDict. Also this would make it integrate better with e-book readers.)
 
 ## Issues
 
